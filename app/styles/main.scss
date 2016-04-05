@@ -1,15 +1,53 @@
 // bower:scss
 // endbower
 
+@import './variables';
+
 body {
-  background: #fafafa;
+  background: $document-background-color;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
 }
 
 .browserupgrade {
-  margin: 0.2em 0;
   background: #ccc;
   color: #000;
+  margin: 0.2em 0;
   padding: 0.2em 0;
+}
+
+.form-section-container {
+  width: 100%;
+}
+
+.form-content-container {
+  border-top: 1px solid $form-border-color;
+  padding: 12px;
+}
+
+.account-form {
+  background: $form-background-color;
+  box-shadow: $form-box-shadow;
+  color: $default-text-color;
+  margin: 0 auto;
+  max-width: 440px;
+
+  &__input {
+    font-size: 1em;
+    width: 100%;
+  }
+
+  &__label {
+    cursor: pointer;
+    display: block;
+    font-size: 1em;
+    margin-bottom: 4px;
+  }
+
+  &__submit-button {
+    background: $default-text-color;
+    color: $light-text-color;
+    font-size: 1em;
+    padding: 1em 0;
+    width: 100%;
+  }
 }

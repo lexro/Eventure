@@ -25,25 +25,34 @@
     <![endif]-->
 
     <form class="account-form">
-      <label for="account-form__name">
-        Your name
-        <input id="account-form__name" type="text" autofocus autocomplete="on" required></input>
-      </label>
+      <div class="form-section-container">
+        <div class="form-content-container">
+          <label for="account-form__name" class="account-form__label">Your name</label>
+            <input id="account-form__name" class="account-form__input" type="text" autofocus autocomplete="on" required>
+          </div>
 
-      <label for="account-form__email">
-        Email address
-        <input id="account-form__email" type="email" autocomplete="on" required></input>
-      </label>
+        <div class="form-content-container">
+          <label for="account-form__email" class="account-form__label">Email address</label>
+            <input id="account-form__email" class="account-form__input" type="email" autocomplete="on" required>
+        </div>
 
-      <label for="account-form__password">
-        Password
-        <input id="account-form__password" type="password" required></input>
-      </label>
+        <div class="form-content-container">
+          <label for="account-form__password" class="account-form__label">Password</label>
+            <input id="account-form__password" class="account-form__input" type="password" required>
+          </label>
+        </div>
 
-      <label for="account-form__confirm-password">
-        Confirm password
-        <input id="account-form__confirm-password" type="password" required=""></input>
-      </label>
+        <div class="form-content-container">
+          <label for="account-form__confirm-password" class="account-form__label">Confirm password</label>
+          <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
+        </div>
+      </div>
+
+      <div class="form-section-container">
+        <div class="form-content-container">
+          <button type="submit" class="account-form__submit-button">Sign up</button>
+        </div>
+      </div>
     </form>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
