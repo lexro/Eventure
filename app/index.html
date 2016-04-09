@@ -28,48 +28,50 @@
       <nav class="main-nav">
         <ul class="main-nav__links">
           <li class="main-nav__links__item">
-            <a href="#" class="main-nav--link">Home</a>
+            <a href="#" class="main-nav--link" data-name="home">Home</a>
           </li>
           <li class="main-nav__links__item">
-            <a href="#" class="main-nav--link">Start Event</a>
+            <a href="#" class="main-nav--link" data-name="create">Create Event</a>
           </li>
           <li class="main-nav__links__item">
-            <a href="#" class="main-nav--link">Sign up</a>
+            <a href="#" class="main-nav--link" data-name="signup">Sign up</a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <form class="account-form">
-      <div class="form-section-container">
-        <div class="form-content-container">
-          <label for="account-form__name" class="account-form__label">Your name</label>
-            <input id="account-form__name" class="account-form__input" type="text" autofocus autocomplete="on" required>
+    <div class="account-creation page">
+      <form class="account-form">
+        <div class="form-section-container">
+          <div class="form-content-container">
+            <label for="account-form__name" class="account-form__label">Your name</label>
+              <input id="account-form__name" class="account-form__input" type="text" autofocus autocomplete="on" required>
+            </div>
+
+          <div class="form-content-container">
+            <label for="account-form__email" class="account-form__label">Email address</label>
+              <input id="account-form__email" class="account-form__input" type="email" autocomplete="on" required>
           </div>
 
-        <div class="form-content-container">
-          <label for="account-form__email" class="account-form__label">Email address</label>
-            <input id="account-form__email" class="account-form__input" type="email" autocomplete="on" required>
+          <div class="form-content-container">
+            <label for="account-form__password" class="account-form__label">Password</label>
+              <input id="account-form__password" class="account-form__input" type="password" required>
+            </label>
+          </div>
+
+          <div class="form-content-container">
+            <label for="account-form__confirm-password" class="account-form__label">Confirm password</label>
+            <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
+          </div>
         </div>
 
-        <div class="form-content-container">
-          <label for="account-form__password" class="account-form__label">Password</label>
-            <input id="account-form__password" class="account-form__input" type="password" required>
-          </label>
+        <div class="form-section-container">
+          <div class="form-content-container">
+            <button type="submit" class="account-form__submit-button">Sign up</button>
+          </div>
         </div>
-
-        <div class="form-content-container">
-          <label for="account-form__confirm-password" class="account-form__label">Confirm password</label>
-          <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
-        </div>
-      </div>
-
-      <div class="form-section-container">
-        <div class="form-content-container">
-          <button type="submit" class="account-form__submit-button">Sign up</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--     <script>
@@ -89,8 +91,9 @@
     <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
 
     <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <script src="scripts/accounts/account-creation.js"></script>
+    <script type="text/javascript" src="scripts/accounts/account-creation.js"></script>
+    <script type="text/javascript" src="scripts/controller.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>
 </html>
