@@ -25,6 +25,14 @@ body {
   padding: 0.2em 0;
 }
 
+.page {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
 .form-section-container {
   width: 100%;
 }
