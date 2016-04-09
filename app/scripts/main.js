@@ -22,11 +22,14 @@ console.log('------------ Event Planner -------------');
   $(document).on('click', 'a', function (event){
     var $this = $(this);
     var path = $this.attr('data-name');
-
     var route = routes[path];
+    var state;
 
     if (route) {
-      history.pushState(null, null, '/' + path);
+      state = {
+        path: path
+      };
+      history.pushState(state, null, '/' + path);
       route();
     }
 
@@ -36,8 +39,13 @@ console.log('------------ Event Planner -------------');
 
   $(window).on('popstate', function (e) {
       var state = e.originalEvent.state;
-      if (state !== null) {
+      var route;
 
+      if (state !== null) {
+        route = routes[state.path];
+        if (route) {
+          route();
+        }
       }
   });
 })();
