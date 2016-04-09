@@ -9,10 +9,10 @@ console.log('------------ Event Planner -------------');
 
   var routes = {
     'home': function () {
-      console.log('go home');
+      eventPlannerApp.controller.render('home');
     },
     'create': function () {
-      console.log('create event');
+      eventPlannerApp.controller.render('event-creation');
     },
     'signup': function () {
       eventPlannerApp.controller.render('account-creation');
