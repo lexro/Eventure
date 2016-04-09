@@ -1,7 +1,17 @@
 // bower:scss
 // endbower
 
+@import './normalize';
 @import './variables';
+@import './main-nav';
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   background: $document-background-color;
@@ -26,7 +36,6 @@ body {
 
 .account-form {
   background: $form-background-color;
-  box-shadow: $form-box-shadow;
   color: $default-text-color;
   margin: 0 auto;
   max-width: 440px;

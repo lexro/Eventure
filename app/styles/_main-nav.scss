@@ -1,0 +1,19 @@
+.main-nav {
+  &__links {
+    align-items: center;
+    background: $primary-white;
+    display: flex;
+    font-size: 20px;
+    height: 65px;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &--link {
+    color: $default-text-color;
+    padding: 15px 0;
+    text-decoration: none;
+  }
+};
