@@ -8,20 +8,23 @@ console.log('------------ Event Planner -------------');
   var eventPlannerApp = new EventPlannerApp();
 
   var routes = {
-    'home': function () {
+    '/': function () {
       eventPlannerApp.controller.render('home');
     },
-    'create': function () {
+    '/create': function () {
       eventPlannerApp.controller.render('event-creation');
     },
-    'signup': function () {
+    '/signup': function () {
       eventPlannerApp.controller.render('account-creation');
     }
   };
 
-  $(document).on('click', 'a', function (event){
-    var $this = $(this);
-    var path = $this.attr('data-name');
+  /**
+   * Triggers view if route exists and pushes to history stack
+   *
+   * @param {String} path the pathname of the route
+   */
+  function setView(path) {
     var route = routes[path];
     var state;
 
@@ -29,16 +32,23 @@ console.log('------------ Event Planner -------------');
       state = {
         path: path
       };
-      history.pushState(state, null, '/' + path);
+      history.pushState(state, null, path);
       route();
     }
+  }
+
+  $(document).on('click', 'a', function (event){
+    var $this = $(this);
+    var path = '/' + $this.attr('data-name');
+
+    setView(path);
 
     event.preventDefault();
     event.stopPropagation();
   });
 
-  $(window).on('popstate', function (e) {
-      var state = e.originalEvent.state;
+  $(window).on('popstate', function (event) {
+      var state = event.originalEvent.state;
       var route;
 
       if (state !== null) {
@@ -47,5 +57,11 @@ console.log('------------ Event Planner -------------');
           route();
         }
       }
+  });
+
+  $(window).on('load', function () {
+    var path = decodeURI(location.pathname);
+
+    setView(path);
   });
 })();
