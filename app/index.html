@@ -44,36 +44,107 @@
     </div>
 
     <div class="event-creation page">
+      <form class="event-form">
+        <div class="form-section-container">
+
+          <div class="form-content-container">
+            <label for="event-form__datetime" class="event-form__label">
+              When is your event?
+            </label>
+            <input id="event-form__datetime" class="event-form__input" type="datetime-local"autocomplete="on" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__event-location" class="event-form__label">
+              Where is your event?
+            </label>
+            <input id="event-form__event-location" class="event-form__input" type="text"autocomplete="street-address" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__event-type" class="event-form__label">
+              What is the type of event?
+            </label>
+            <input id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__event-host" class="event-form__label">
+              Who is hosting?
+            </label>
+            <input id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__event-name" class="event-form__label">
+              Name your event:
+            </label>
+            <input id="event-form__event-name" class="event-form__input" type="text" autocomplete="on" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__event-description" class="event-form__label">
+              Describe your event:
+            </label>
+            <input id="event-form__description" class="event-form__input" type="text" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__confirm-password" class="event-form__label">
+              Who do you want to invite?
+            </label>
+            <input id="event-form__confirm-password" class="event-form__input" type="text" required></input>
+          </div>
+        </div>
+
+        <div class="form-section-container">
+          <div class="form-content-container">
+            <button type="submit" class="event-form__submit-button">
+              Create Event
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
 
     <div class="account-creation page">
       <form class="account-form">
         <div class="form-section-container">
-          <div class="form-content-container">
-            <label for="account-form__name" class="account-form__label">Your name</label>
-              <input id="account-form__name" class="account-form__input" type="text" autofocus autocomplete="on" required>
-            </div>
 
           <div class="form-content-container">
-            <label for="account-form__email" class="account-form__label">Email address</label>
-              <input id="account-form__email" class="account-form__input" type="email" autocomplete="on" required>
-          </div>
-
-          <div class="form-content-container">
-            <label for="account-form__password" class="account-form__label">Password</label>
-              <input id="account-form__password" class="account-form__input" type="password" required>
+            <label for="account-form__name" class="account-form__label">
+              Your name
             </label>
+            <input id="account-form__name" class="account-form__input" type="text" autocomplete="name" required>
           </div>
 
           <div class="form-content-container">
-            <label for="account-form__confirm-password" class="account-form__label">Confirm password</label>
+            <label for="account-form__email" class="account-form__label">
+              Email address
+            </label>
+            <input id="account-form__email" class="account-form__input" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="account-form__password" class="account-form__label">
+              Password
+            </label>
+            <input id="account-form__password" class="account-form__input" type="password" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="account-form__confirm-password" class="account-form__label">
+              Confirm password
+            </label>
             <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
           </div>
         </div>
 
         <div class="form-section-container">
           <div class="form-content-container">
-            <button type="submit" class="account-form__submit-button">Sign up</button>
+            <button type="submit" class="account-form__submit-button">
+              Sign up
+            </button>
           </div>
         </div>
       </form>

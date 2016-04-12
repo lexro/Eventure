@@ -1,0 +1,15 @@
+.event-form {
+  @extend %form;
+
+  &__input {
+    @extend %form__input;
+  }
+
+  &__label {
+    @extend %form__label;
+  }
+
+  &__submit-button {
+    @extend %form__submit-button;
+  }
+}
