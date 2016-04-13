@@ -48,17 +48,39 @@
         <div class="form-section-container">
 
           <div class="form-content-container">
-            <label for="event-form__datetime" class="event-form__label">
-              When is your event?
+            <label for="event-form__event-title" class="event-form__label">
+              Event Title
             </label>
-            <input id="event-form__datetime" class="event-form__input" type="datetime-local"autocomplete="on" required>
+            <input id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
           </div>
 
           <div class="form-content-container">
             <label for="event-form__event-location" class="event-form__label">
               Where is your event?
             </label>
-            <input id="event-form__event-location" class="event-form__input" type="text"autocomplete="street-address" required>
+            <input id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__start-date" class="event-form__label">
+              When does it start?
+            </label>
+            <div class="event-form__start-input">
+              <input id="event-form__start-date" class="event-form__input" type="date" required>
+
+              <input id="event-form__start-time" class="event-form__input" type="time" required>
+            </div>
+          </div>
+
+          <div class="form-content-container">
+            <label for="event-form__end-date" class="event-form__label">
+              When does it end?
+            </label>
+            <div class="event-form__end-input">
+              <input id="event-form__end-date" class="event-form__input" type="date" required>
+
+              <input id="event-form__end-time" class="event-form__input" type="time" required>
+            </div>
           </div>
 
           <div class="form-content-container">
@@ -73,13 +95,6 @@
               Who is hosting?
             </label>
             <input id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
-          </div>
-
-          <div class="form-content-container">
-            <label for="event-form__event-name" class="event-form__label">
-              Name your event:
-            </label>
-            <input id="event-form__event-name" class="event-form__input" type="text" autocomplete="on" required>
           </div>
 
           <div class="form-content-container">

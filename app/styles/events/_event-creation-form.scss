@@ -12,4 +12,17 @@
   &__submit-button {
     @extend %form__submit-button;
   }
+
+  &__end-input,
+  &__start-input {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+#event-form__end-time,
+#event-form__end-date,
+#event-form__start-time,
+#event-form__start-date {
+  flex: 0 0 100px;
 }
