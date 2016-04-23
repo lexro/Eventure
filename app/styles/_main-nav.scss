@@ -1,7 +1,7 @@
 .main-nav {
   &__links {
     align-items: center;
-    background: $primary-white;
+    background: $website-color1;
     display: flex;
     font-size: 20px;
     height: 65px;
@@ -12,7 +12,7 @@
   }
 
   &--link {
-    color: $default-text-color;
+    color: $light-text-color;
     padding: 15px 0;
     text-decoration: none;
   }

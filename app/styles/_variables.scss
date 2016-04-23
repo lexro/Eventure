@@ -1,8 +1,28 @@
 $document-background-color: #e7e7e7;
 $default-text-color: #555;
-$light-text-color: #fff;
+
 $form-border-color: #eee;
 $form-background-color: #f8f8f8;
 $form-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.82);
 
+$peter-river: rgba(52, 152, 219, 1.0);
+$carrot: rgba(230, 126, 34, 1.0);
+$clouds: rgba(236, 240, 241, 1.0);
+$silver: rgba(189, 195, 199, 1.0);
+$concrete: rgba(149, 165, 166, 1.0);
+$asbestos: rgba(127, 140, 141, 1.0);
+$wet-asphatl: rgba(52, 73, 94, 1.0);
+$midnight-blue: rgba(44, 62, 80, 1.0);
+$emerald: rgba(46, 204, 113, 1.0);
+$alizarin: rgba(231, 76, 60, 1.0);
+$orange: rgba(243, 156, 18, 1.0);
+
 $primary-white: #fff;
+$primary-black: #000;
+$light-text-color: #fff;
+$dark-text-color: #555;
+$website-color1: $orange;
+$default-button-color: $peter-river;
+$default-button-color-hover: mix($default-button-color, $primary-white, 95%);
+$default-button-color-active: mix($default-button-color, $primary-black, 90%);
+$hero-tint-color: rgba(0, 0, 0, .4);
