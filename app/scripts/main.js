@@ -40,11 +40,15 @@ console.log('------------ Event Planner -------------');
   $(document).on('click', 'a', function (event){
     var $this = $(this);
     var path = '/' + $this.attr('data-name');
+    var target = $this.attr('target');
 
-    setView(path);
+    // allow for external links to another window
+    if (target !== '_blank') {
+      setView(path);
 
-    event.preventDefault();
-    event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
+    }
   });
 
   $(window).on('popstate', function (event) {
