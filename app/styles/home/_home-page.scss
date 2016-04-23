@@ -1,0 +1,51 @@
+.home {
+  &__hero {
+    background:
+      linear-gradient(
+        $hero-tint-color,
+        $hero-tint-color
+      ),
+      /* Image credit goes to Moyan Brenn and used as is under Creative Commons CC-BY-2.0 */
+      url('../../images/rome.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  &__image-credit {
+    bottom: 20px;
+    color: $light-text-color;
+    font-size: 10px;
+    position: absolute;
+    right: 20px;
+    text-decoration: none;
+  }
+
+  &__title-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $light-text-color;
+    font-weight: normal;
+  }
+
+  &__get-started {
+    background: $default-button-color;
+    color: $light-text-color;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-decoration: none;
+
+    &:hover {
+      background: $default-button-color-hover;
+    }
+
+    &:active {
+      background: $default-button-color-active;
+    }
+  }
+}
