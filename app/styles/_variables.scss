@@ -26,3 +26,5 @@ $default-button-color: $peter-river;
 $default-button-color-hover: mix($default-button-color, $primary-white, 95%);
 $default-button-color-active: mix($default-button-color, $primary-black, 90%);
 $hero-tint-color: rgba(0, 0, 0, .4);
+
+$default-font: 'Lato', sans-serif;
