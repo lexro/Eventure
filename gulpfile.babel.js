@@ -5,6 +5,10 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 import historyApiFallback from 'connect-history-api-fallback';
+import browserify from 'browserify';
+import source from 'vinyl-source-stream';
+import buffer from 'vinyl-buffer';
+import babel from 'babelify';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -25,10 +29,17 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
+  var b = browserify({
+    entries: ['app/scripts/main.js'],
+    debug: true,
+    transform: [babel]
+  });
+
+  return b.bundle()
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.babel())
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe($.sourcemaps.init({loadMaps: true}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
