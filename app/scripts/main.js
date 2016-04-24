@@ -1,8 +1,10 @@
 console.log('------------ Event Planner -------------');
+import Controller from './controller';
+import AccountCreation from './accounts/account-creation';
 
 (function () {
   function EventPlannerApp () {
-    this.controller = new app.Controller();
+    this.controller = new Controller();
   }
 
   var eventPlannerApp = new EventPlannerApp();
