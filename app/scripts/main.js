@@ -16,6 +16,9 @@ console.log('------------ Event Planner -------------');
     },
     '/signup': function () {
       eventPlannerApp.controller.render('account-creation');
+    },
+    '/display': function () {
+      eventPlannerApp.controller.render('event-display');
     }
   };
 
