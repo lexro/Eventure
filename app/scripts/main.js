@@ -20,7 +20,7 @@ import AccountCreation from './accounts/account-creation';
       eventPlannerApp.controller.render('account-creation');
     },
     '/display': function () {
-      eventPlannerApp.controller.render('event-display');
+      eventPlannerApp.controller.renderDisplayEvents();
     }
   };
 
