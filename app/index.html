@@ -67,14 +67,14 @@
             <label for="event-form__event-title" class="event-form__label">
               Event Title
             </label>
-            <input id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
+            <input name="title" id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
           </div>
 
           <div class="form-content-container">
             <label for="event-form__event-location" class="event-form__label">
               Where is your event?
             </label>
-            <input id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
+            <input name="location" id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
           </div>
 
           <div class="form-content-container">
@@ -82,9 +82,9 @@
               When does it start?
             </label>
             <div class="event-form__start-input">
-              <input id="event-form__start-date" class="event-form__input" type="date" required>
+              <input name="startDate" id="event-form__start-date" class="event-form__input" type="date" required>
 
-              <input id="event-form__start-time" class="event-form__input" type="time" required>
+              <input name="startTime" id="event-form__start-time" class="event-form__input" type="time" required>
             </div>
           </div>
 
@@ -93,9 +93,9 @@
               When does it end?
             </label>
             <div class="event-form__end-input">
-              <input id="event-form__end-date" class="event-form__input" type="date" required>
+              <input name="endDate" id="event-form__end-date" class="event-form__input" type="date" required>
 
-              <input id="event-form__end-time" class="event-form__input" type="time" required>
+              <input name="endTime" id="event-form__end-time" class="event-form__input" type="time" required>
             </div>
           </div>
 
@@ -103,28 +103,28 @@
             <label for="event-form__event-type" class="event-form__label">
               What is the type of event?
             </label>
-            <input id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
+            <input name="type" id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
           </div>
 
           <div class="form-content-container">
             <label for="event-form__event-host" class="event-form__label">
               Who is hosting?
             </label>
-            <input id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
+            <input name="host" id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
           </div>
 
           <div class="form-content-container">
             <label for="event-form__event-description" class="event-form__label">
               Describe your event:
             </label>
-            <input id="event-form__description" class="event-form__input" type="text" required>
+            <input name="description" id="event-form__description" class="event-form__input" type="text" required>
           </div>
 
           <div class="form-content-container">
-            <label for="event-form__confirm-password" class="event-form__label">
+            <label for="event-form__description" class="event-form__label">
               Who do you want to invite?
             </label>
-            <input id="event-form__confirm-password" class="event-form__input" type="text" required></input>
+            <input name="members" id="event-form__description" class="event-form__input" type="text" required></input>
           </div>
         </div>
 
