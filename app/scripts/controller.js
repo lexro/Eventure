@@ -1,7 +1,14 @@
 import DisplayEvents from './events/display-events';
+import EventForm from './events/event-form';
+import EventModel from './events/event-model';
 
 function Controller () {
+  this.eventModel = new EventModel();
+  this.eventForm = new EventForm();
   this.displayEvents = new DisplayEvents();
+
+  var $eventForm = this.eventForm.getEventForm();
+  $eventForm.on('addEvent', this._addEvent.bind(this));
 }
 
 /**
@@ -19,39 +26,17 @@ Controller.prototype.render = function (viewType) {
 };
 
 Controller.prototype.renderDisplayEvents = function () {
-
-  var stubEvents = {
-    event1: {
-      location: 'Hawaii',
-      title: 'Event 1',
-      startTime: '2:00 pm',
-      startDate: 'January 8, 2017',
-      endTime: '8:00 pm',
-      endDate: 'January 8, 2017',
-      type: 'Birthday',
-      host: 'Lex',
-      description: 'Birthday party for blah blah!',
-      members: ['a', 'b', 'c', 'd']
-    },
-    event2: {
-      location: 'San Francsco',
-      title: 'Event 2',
-      startTime: '2:00 pm',
-      startDate: 'January 8, 2017',
-      endTime: '8:00 pm',
-      endDate: 'January 8, 2017',
-      type: 'Birthday',
-      host: 'Lex',
-      description: 'Birthday party for blah blah!',
-      members: ['a', 'b', 'c', 'd']
-    }
-  };
-
+  var stubEvents = this.eventModel.getEvents();
   var displayEventHTML = this.displayEvents.generateHTML(stubEvents);
   var displayEventContainer = document.querySelectorAll('.event-display__container')[0];
 
   displayEventContainer.innerHTML = displayEventHTML;
   this.render('event-display');
+};
+
+Controller.prototype._addEvent = function(event, eventData) {
+  this.eventModel.addEvent(eventData.data);
+  event.stopPropagation();
 };
 
 export default Controller;
