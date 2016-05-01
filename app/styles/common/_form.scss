@@ -14,11 +14,11 @@
   }
 
   &__input:focus:invalid {
-    border-color: $input-invalid-border-color;
+    border-color: $input-invalid-color;
   }
 
   &__input:valid {
-    border-color: $input-valid-border-color;
+    border-color: $input-valid-color;
   }
 
   &__label {
@@ -54,4 +54,10 @@
 
 .form-content-container {
   padding: 16px;
+}
+
+.form__error-message {
+  color: $input-invalid-color;
+  height: 1em;
+  margin-top: 8px;
 }

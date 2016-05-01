@@ -28,8 +28,8 @@ $default-button-color-hover: mix($default-button-color, $primary-white, 95%);
 $default-button-color-active: mix($default-button-color, $primary-black, 90%);
 
 $hero-tint-color: rgba(0, 0, 0, .4);
-$input-invalid-border-color: $alizarin;
-$input-valid-border-color: $emerald;
+$input-invalid-color: $alizarin;
+$input-valid-color: $emerald;
 
 $default-font: 'Lato', sans-serif;
 

@@ -1,11 +1,13 @@
 import DisplayEvents from './events/display-events';
 import EventForm from './events/event-form';
 import EventModel from './events/event-model';
+import AccountForm from './accounts/account-form';
 
 function Controller () {
   this.eventModel = new EventModel();
   this.eventForm = new EventForm();
   this.displayEvents = new DisplayEvents();
+  this.accountForm = new AccountForm();
 
   var $eventForm = this.eventForm.getEventForm();
   $eventForm.on('addEvent', this._addEvent.bind(this));
