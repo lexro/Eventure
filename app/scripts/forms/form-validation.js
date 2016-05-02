@@ -30,9 +30,13 @@ FormValidation.prototype.setup = function () {
 
       // add validation message
       errorElement.textContent = validationMessage;
+      input.classList.remove('form__input-valid');
+      input.classList.add('form__input-invalid');
     } else {
       // remove any validation message for valid values
       errorElement.textContent = '';
+      input.classList.remove('form__input-invalid');
+      input.classList.add('form__input-valid');
     }
   });
 };
