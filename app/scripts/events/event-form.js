@@ -14,8 +14,7 @@ function EventForm () {
 }
 
 EventForm.prototype.getEventForm = function () {
-  return $(this.selector);
+  return document.querySelector(this.selector);
 };
-
 
 export default EventForm;

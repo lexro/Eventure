@@ -10,8 +10,8 @@ function Controller () {
   this.displayEvents = new DisplayEvents();
   this.accountForm = new AccountForm();
 
-  var $eventForm = this.eventForm.getEventForm();
-  $eventForm.on('addEvent', this._addEvent.bind(this));
+  var eventForm = this.eventForm.getEventForm();
+  eventForm.addEventListener('addEvent', this._addEvent.bind(this));
 }
 
 /**
@@ -22,10 +22,10 @@ function Controller () {
  */
 Controller.prototype.render = function (viewType) {
   var viewClass;
-  $('.page').removeClass('visible');
+  document.querySelector('.page').classList.remove('visible');
 
   viewClass = '.' + viewType;
-  $(viewClass).addClass('visible');
+  document.querySelector(viewClass).classList.add('visible');
 };
 
 Controller.prototype.renderDisplayEvents = function () {
