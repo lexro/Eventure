@@ -1,14 +1,13 @@
-function AccountCreation () {
+function AccountFormValidator () {
   var SELECTORS = {
     firstPasswordInput: '#account-form__password',
     confirmPasswordInput: '#account-form__confirm-password',
     submitButton: '.account-form__submit-button'
   };
 
-  var $firstPasswordInput = $(SELECTORS.firstPasswordInput);
-  var $confirmPasswordInput = $(SELECTORS.confirmPasswordInput);
-  var $submitButton = $(SELECTORS.submitButton);
-  var firstPasswordDOMElement = $firstPasswordInput[0];
+  var firstPasswordInput = document.querySelector(SELECTORS.firstPasswordInput);
+  var confirmPasswordInput = document.querySelector(SELECTORS.confirmPasswordInput);
+  var submitButton = document.querySelector(SELECTORS.submitButton);
 
   var VALIDATIONS = {
     sybmol: [/[\!\@\#\$\%\^\&\*]/g, 'Should have a symbol (!, @, #, $, %, ^, &, *)'],
@@ -42,9 +41,9 @@ function AccountCreation () {
     return validationMessages;
   }
 
-  $submitButton.click(function () {
-    var firstPasswordValue = $firstPasswordInput.val();
-    var confirmPasswordValue = $confirmPasswordInput.val();
+  submitButton.addEventListener('click', function () {
+    var firstPasswordValue = firstPasswordInput.value;
+    var confirmPasswordValue = confirmPasswordInput.value;
     var validationMessages = [];
     var validationMessage;
 
@@ -56,10 +55,10 @@ function AccountCreation () {
 
     if (validationMessages.length) {
       validationMessage = 'Please fix these issues:\n' + validationMessages.join('\n');
-      firstPasswordDOMElement.setCustomValidity(validationMessage);
+      firstPasswordInput.setCustomValidity(validationMessage);
     }
   });
 
 }
 
-export default new AccountCreation();
+export default new AccountFormValidator();
