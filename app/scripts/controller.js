@@ -22,7 +22,11 @@ function Controller () {
  */
 Controller.prototype.render = function (viewType) {
   var viewClass;
-  document.querySelector('.page').classList.remove('visible');
+  var pages = document.querySelectorAll('.page');
+
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].classList.remove('visible');
+  }
 
   viewClass = '.' + viewType;
   document.querySelector(viewClass).classList.add('visible');
