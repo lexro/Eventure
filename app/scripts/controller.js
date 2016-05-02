@@ -2,6 +2,7 @@ import DisplayEvents from './events/display-events';
 import EventForm from './events/event-form';
 import EventModel from './events/event-model';
 import AccountForm from './accounts/account-form';
+import AccountCreation from './accounts/account-creation';
 
 function Controller () {
   this.eventModel = new EventModel();

@@ -1,6 +1,5 @@
-console.log('------------ Event Planner -------------');
+console.log('------------ Evently -------------');
 import Controller from './controller';
-import AccountCreation from './accounts/account-creation';
 
 (function () {
   function EventPlannerApp () {
@@ -42,33 +41,39 @@ import AccountCreation from './accounts/account-creation';
     }
   }
 
-  $(document).on('click', 'a', function (event){
-    var $this = $(this);
-    var path = '/' + $this.attr('data-name');
-    var target = $this.attr('target');
+  // global click handler for routing
+  document.addEventListener('click', function (event) {
+    var element = event && event.target;
 
-    // allow for external links to another window
-    if (target !== '_blank') {
-      setView(path);
+    if (element && element.nodeName.toLowerCase() === 'a') {
+      var path = '/' + element.getAttribute('data-name');
+      var target = element.getAttribute('target');
 
-      event.preventDefault();
-      event.stopPropagation();
+      // allow for external links to another window
+      if (target !== '_blank') {
+        setView(path);
+
+        event.preventDefault();
+        event.stopPropagation();
+      }
     }
   });
 
-  $(window).on('popstate', function (event) {
-      var state = event.originalEvent.state;
-      var route;
+  // simulate a navigate to previous page
+  window.addEventListener('popstate', function (event) {
+    var state = event.state;
+    var route;
 
-      if (state !== null) {
-        route = routes[state.path];
-        if (route) {
-          route();
-        }
+    if (state !== null) {
+      route = routes[state.path];
+      if (route) {
+        route();
       }
+    }
   });
 
-  $(window).on('load', function () {
+  // trigger on loading of the app
+  window.addEventListener('load', function (event) {
     var path = decodeURI(location.pathname);
 
     setView(path);
