@@ -23,14 +23,16 @@ FormValidation.prototype.setup = function () {
   // show the validation message on focus out of an input element
   form.addEventListener('focusout', function (event) {
     var input = event.target;
+    var errorElement = input.parentElement.querySelector('.form__error-message') || {};
 
     if (!input.validity.valid) {
       var validationMessage = input.validationMessage;
-      console.log(validationMessage);
 
       // add validation message
-      var errorElement = input.parentElement.querySelector('.form__error-message');
       errorElement.textContent = validationMessage;
+    } else {
+      // remove any validation message for valid values
+      errorElement.textContent = '';
     }
   });
 };
