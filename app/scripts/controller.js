@@ -40,8 +40,8 @@ Controller.prototype.renderDisplayEvents = function () {
   this.render('event-display');
 };
 
-Controller.prototype._addEvent = function(event, eventData) {
-  this.eventModel.addEvent(eventData.data);
+Controller.prototype._addEvent = function(event) {
+  this.eventModel.addEvent(event.detail.data);
   event.stopPropagation();
 };
 
