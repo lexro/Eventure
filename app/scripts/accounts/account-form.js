@@ -19,7 +19,6 @@ function AccountForm() {
 
 /**
  * Adds listeners on form elements for validation
- * @return {[type]} [description]
  */
 AccountForm.prototype._setupValidation = function () {
   var submitButton = document.querySelector(this.selectors.submitButton);
