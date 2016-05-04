@@ -68,6 +68,7 @@
               Event Title
             </label>
             <input name="title" id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
+            <div class="form__error-message"></div>
           </div>
 
           <div class="form-content-container">
@@ -75,6 +76,7 @@
               Where is your event?
             </label>
             <input name="location" id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
+            <div class="form__error-message"></div>
           </div>
 
           <div class="form-content-container">
@@ -82,9 +84,14 @@
               When does it start?
             </label>
             <div class="event-form__start-input">
-              <input name="startDate" id="event-form__start-date" class="event-form__input" type="date" required>
-
-              <input name="startTime" id="event-form__start-time" class="event-form__input" type="time" required>
+              <div>
+                <input name="startDate" id="event-form__start-date" class="event-form__input" type="date" required>
+                <div class="form__error-message"></div>
+              </div>
+              <div>
+                <input name="startTime" id="event-form__start-time" class="event-form__input" type="time" required>
+                <div class="form__error-message"></div>
+              </div>
             </div>
           </div>
 
@@ -93,9 +100,14 @@
               When does it end?
             </label>
             <div class="event-form__end-input">
-              <input name="endDate" id="event-form__end-date" class="event-form__input" type="date" required>
-
-              <input name="endTime" id="event-form__end-time" class="event-form__input" type="time" required>
+              <div>
+                <input name="endDate" id="event-form__end-date" class="event-form__input" type="date" required>
+                <div class="form__error-message"></div>
+              </div>
+              <div>
+                <input name="endTime" id="event-form__end-time" class="event-form__input" type="time" required>
+                <div class="form__error-message"></div>
+              </div>
             </div>
           </div>
 
@@ -104,6 +116,7 @@
               What is the type of event?
             </label>
             <input name="type" id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
+            <div class="form__error-message"></div>
           </div>
 
           <div class="form-content-container">
@@ -111,6 +124,7 @@
               Who is hosting?
             </label>
             <input name="host" id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
+            <div class="form__error-message"></div>
           </div>
 
           <div class="form-content-container">
@@ -118,13 +132,15 @@
               Describe your event:
             </label>
             <input name="description" id="event-form__description" class="event-form__input" type="text" required>
+            <div class="form__error-message"></div>
           </div>
 
           <div class="form-content-container">
             <label for="event-form__description" class="event-form__label">
               Who do you want to invite?
             </label>
-            <input name="members" id="event-form__description" class="event-form__input" type="text" required></input>
+            <input name="members" id="event-form__description" class="event-form__input" type="text" required>
+            <div class="form__error-message"></div>
           </div>
         </div>
 
