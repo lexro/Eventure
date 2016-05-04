@@ -23,22 +23,31 @@ FormValidation.prototype.setup = function () {
   // show the validation message on focus out of an input element
   form.addEventListener('focusout', function (event) {
     var input = event.target;
-    var errorElement = input.parentElement.querySelector('.form__error-message') || {};
+    this.addErrorMessage(input);
+  }.bind(this));
+};
 
-    if (!input.validity.valid) {
-      var validationMessage = input.validationMessage;
+/**
+ * Adds the error validation message underneath the input element
+ *
+ * @param {HTMLElement} input - the input element
+ */
+FormValidation.prototype.addErrorMessage  = function (input) {
+  var errorElement = input.parentElement.querySelector('.form__error-message') || {};
 
-      // add validation message
-      errorElement.textContent = validationMessage;
-      input.classList.remove('form__input-valid');
-      input.classList.add('form__input-invalid');
-    } else {
-      // remove any validation message for valid values
-      errorElement.textContent = '';
-      input.classList.remove('form__input-invalid');
-      input.classList.add('form__input-valid');
-    }
-  });
+  if (!input.validity.valid) {
+    var validationMessage = input.validationMessage;
+
+    // add validation message
+    errorElement.textContent = validationMessage;
+    input.classList.remove('form__input-valid');
+    input.classList.add('form__input-invalid');
+  } else {
+    // remove any validation message for valid values
+    errorElement.textContent = '';
+    input.classList.remove('form__input-invalid');
+    input.classList.add('form__input-valid');
+  }
 };
 
 export default FormValidation;

@@ -1,5 +1,6 @@
 import FormValidation from '../forms/form-validation';
 import AccountFormValidator from './account-form-validator';
+import debounce from '../utils/debounce';
 
 /**
  * Account Form class that handles the account creation.
@@ -11,6 +12,7 @@ function AccountForm() {
     confirmPasswordInput: '#account-form__confirm-password',
     submitButton: '.account-form__submit-button'
   };
+  this.debounceTime = 250;
   var formElement = document.querySelector(this.selector);
   this.formValidation = new FormValidation(formElement);
   this.accountFormValidator = new AccountFormValidator();
@@ -25,14 +27,16 @@ AccountForm.prototype._setupValidation = function () {
   submitButton.addEventListener('click', this._validateAccount.bind(this));
 
   var firstPasswordInput = document.querySelector(this.selectors.firstPasswordInput);
-  firstPasswordInput.addEventListener('change', function () {
-    this._validatePassword();
-  }.bind(this));
-
   var confirmPasswordInput = document.querySelector(this.selectors.confirmPasswordInput);
-  confirmPasswordInput.addEventListener('change', function () {
+  var validateFunc = debounce(function () {
+    this._validatePassword();
     this._validateConfirmPassword();
-  }.bind(this));
+    this.formValidation.addErrorMessage(firstPasswordInput);
+    this.formValidation.addErrorMessage(confirmPasswordInput);
+  }.bind(this), this.debounceTime);
+
+  firstPasswordInput.addEventListener('input', validateFunc);
+  confirmPasswordInput.addEventListener('input', validateFunc);
 };
 
 /**
