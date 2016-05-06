@@ -13,6 +13,10 @@
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="import" href="bower_components/paper-time-picker/paper-time-picker.html">
+    <link rel="import" href="bower_components/paper-date-picker/paper-date-picker.html">
+    <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
 
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
@@ -85,12 +89,26 @@
             </label>
             <div class="event-form__start-input">
               <div>
-                <input name="startDate" id="event-form__start-date" class="event-form__input" type="date" required>
+                <input name="startDate" id="event-form__start-date" class="event-form__input" type="text" readonly required>
                 <div class="form__error-message"></div>
+                <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                  <paper-date-picker class="start-date__picker"></paper-date-picker>
+                  <div class="buttons">
+                    <paper-button dialog-dismiss>Cancel</paper-button>
+                    <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
+                  </div>
+                </paper-dialog>
               </div>
               <div>
-                <input name="startTime" id="event-form__start-time" class="event-form__input" type="time" required>
+                <input name="startTime" id="event-form__start-time" class="event-form__input" type="text" readonly required>
                 <div class="form__error-message"></div>
+                <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                  <paper-time-picker class="time-picker"></paper-time-picker>
+                  <div class="buttons">
+                    <paper-button dialog-dismiss>Cancel</paper-button>
+                    <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
+                  </div>
+                </paper-dialog>
               </div>
             </div>
           </div>
@@ -101,12 +119,26 @@
             </label>
             <div class="event-form__end-input">
               <div>
-                <input name="endDate" id="event-form__end-date" class="event-form__input" type="date" required>
+                <input name="endDate" id="event-form__end-date" class="event-form__input" type="text" readonly required>
                 <div class="form__error-message"></div>
+                <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                  <paper-date-picker class="start-date__picker"></paper-date-picker>
+                  <div class="buttons">
+                    <paper-button dialog-dismiss>Cancel</paper-button>
+                    <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
+                  </div>
+                </paper-dialog>
               </div>
               <div>
-                <input name="endTime" id="event-form__end-time" class="event-form__input" type="time" required>
+                <input name="endTime" id="event-form__end-time" class="event-form__input" type="text" readonly required>
                 <div class="form__error-message"></div>
+                <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                  <paper-time-picker class="time-picker"></paper-time-picker>
+                  <div class="buttons">
+                    <paper-button dialog-dismiss>Cancel</paper-button>
+                    <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
+                  </div>
+                </paper-dialog>
               </div>
             </div>
           </div>
@@ -213,6 +245,8 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src="/bower_components/web-animations-js/web-animations.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

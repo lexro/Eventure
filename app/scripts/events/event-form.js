@@ -1,5 +1,5 @@
 import FormValidation from '../forms/form-validation';
-
+import moment from 'moment';
 /**
  * EventForm class that handle event creation
  */
@@ -19,7 +19,113 @@ function EventForm () {
 
     event.preventDefault();
   }.bind(this));
+
+  var startDateSelector = '#event-form__start-date';
+  var startDateElement = document.querySelector(startDateSelector);
+  this.setupDate(startDateElement);
+
+  var endDateSelector = '#event-form__end-date';
+  var endDateElement = document.querySelector(endDateSelector);
+  this.setupDate(endDateElement);
+
+  var timeStartSelector = '#event-form__start-time';
+  var timeStartElement = document.querySelector(timeStartSelector);
+  this.setupTime(timeStartElement);
+
+  var timeEndSelector = '#event-form__end-time';
+  var timeEndElement = document.querySelector(timeEndSelector);
+  this.setupTime(timeEndElement);
+
+  this.setupAutoDate(startDateElement, endDateElement);
 }
+
+EventForm.prototype.setupAutoDate = function (startDateElement, endDateElement) {
+  var _this = this;
+
+  startDateElement.addEventListener('change', function () {
+    console.log('anything');
+    var startDate = startDateElement.parentNode.querySelector('.start-date__picker').date;
+    var endDate = endDateElement.parentNode.querySelector('.start-date__picker').date;
+
+    if (moment(startDate).isAfter(endDate)) {
+      endDate = moment(startDate).add(1, 'days');
+      endDateElement.value = _this._formatDate(endDate);
+    }
+
+  });
+
+  endDateElement.addEventListener('change', function () {
+    var startDate = startDateElement.date;
+    var endDate = endDateElement.date;
+
+    if (moment(endDate).isBefore(startDate)) {
+      startDate = moment(startDate).subtract(1, 'days');
+      startDateElement.value = _this._formatDate(startDate);
+    }
+
+  });
+};
+
+EventForm.prototype.setupDate = function (dateInputElement) {
+  var _this = this;
+  var parentElement = dateInputElement.parentElement;
+  var dialogElement = parentElement.querySelector('.start-date__dialog');
+
+  dateInputElement.addEventListener('focus', function () {
+    dialogElement.open();
+  });
+
+  var datePickerElement = dialogElement.querySelector('.start-date__picker');
+  var okButton = dialogElement.querySelector('.date-picker__ok-button');
+
+  // click event is not triggered on mobile for the date picker
+  okButton.addEventListener('touchend', function (event) {
+    dateInputElement.value = _this._formatDate(datePickerElement.date);
+    var changeEvent = document.createEvent('HTMLEvents');
+
+    changeEvent.initEvent('change', true, true);
+    dateInputElement.dispatchEvent(changeEvent);
+    event.preventDefault();
+  });
+
+  okButton.addEventListener('click', function () {
+    dateInputElement.value = _this._formatDate(datePickerElement.date);
+  });
+
+  // set the initial value to today's date
+  dateInputElement.value = _this._formatDate(datePickerElement.date);
+  _this.formValidation.addErrorMessage(dateInputElement);
+};
+
+EventForm.prototype.setupTime = function (timeInputElement) {
+  var parentElement = timeInputElement.parentElement;
+  var dialogElement = parentElement.querySelector('.time-dialog');
+
+  timeInputElement.addEventListener('focus', function () {
+    dialogElement.open();
+  });
+
+  var timePickerElement = dialogElement.querySelector('.time-picker');
+  var okButton = dialogElement.querySelector('.time-ok-button');
+
+  // click event is not triggered on mobile for the date picker
+  okButton.addEventListener('touchend', function (event) {
+    timeInputElement.value = timePickerElement.time;
+    event.preventDefault();
+  });
+
+  okButton.addEventListener('click', function () {
+    timeInputElement.value = timePickerElement.time;
+  });
+
+  // set the initial value
+  timeInputElement.value = timePickerElement.time;
+  this.formValidation.addErrorMessage(timeInputElement);
+};
+
+EventForm.prototype._formatDate = function (date) {
+  return moment(date).format('ddd LL');
+};
 
 /**
  * Gets the form HTMLElement for event creation
