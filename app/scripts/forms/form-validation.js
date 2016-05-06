@@ -22,8 +22,10 @@ FormValidation.prototype.setup = function () {
 
   // show the validation message on focus out of an input element
   form.addEventListener('focusout', function (event) {
-    var input = event.target;
-    this.addErrorMessage(input);
+    var element = event.target;
+    if (element.nodeName.toLowerCase() === 'input') {
+      this.addErrorMessage(element);
+    }
   }.bind(this));
 };
 
