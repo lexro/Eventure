@@ -1,4 +1,5 @@
 import FormValidation from '../forms/form-validation';
+import LocationAutoCompelete from '../forms/location-autocomplete';
 import moment from 'moment';
 /**
  * EventForm class that handle event creation
@@ -19,6 +20,9 @@ function EventForm () {
 
     event.preventDefault();
   }.bind(this));
+
+  var locationFieldElement = eventForm.querySelector('#event-form__event-location');
+  this.locationAutoComplete = new LocationAutoCompelete(locationFieldElement);
 
   var startDateSelector = '#event-form__start-date';
   var startDateElement = document.querySelector(startDateSelector);

@@ -1,0 +1,15 @@
+// the individual search result tile
+.pac-item-query,
+.pac-item {
+  font-size: 16px;
+  font-family: $default-font;
+}
+
+.pac-item {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.pac-icon {
+  display: none;
+}
