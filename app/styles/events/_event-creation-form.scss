@@ -24,5 +24,34 @@
 #event-form__end-date,
 #event-form__start-time,
 #event-form__start-date {
-  flex: 0 0 100px;
+  cursor: pointer;
 }
+
+#event-form__start-time,
+#event-form__end-time {
+  width: 100px;
+}
+
+@media only screen
+  and (min-width: 768px) {
+  .event-form {
+    &__end-input,
+    &__start-input {
+      display: inline-flex;
+      justify-content: flex-start;
+    }
+  }
+
+  #event-form__end-date,
+  #event-form__start-date {
+    width: 150px;
+  }
+
+  #event-form__end-time,
+  #event-form__end-date,
+  #event-form__start-time,
+  #event-form__start-date {
+    margin-right: 20px;
+  }
+}
+

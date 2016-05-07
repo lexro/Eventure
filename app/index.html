@@ -59,178 +59,185 @@
     </div>
 
     <div class="event-display page">
-      <div class="event-display__container">
+      <div class="page__content">
+        <h1 class="page__title">Your Events</h1>
+        <div class="event-display__container">
+        </div>
       </div>
     </div>
 
     <div class="event-creation page">
-      <form class="event-form">
-        <div class="form-section-container">
+      <div class="page__content">
+        <h1 class="page__title">Create Your Event</h1>
+        <form class="event-form">
+          <div class="form-section-container">
 
-          <div class="form-content-container">
-            <label for="event-form__event-title" class="event-form__label">
-              Event Title
-            </label>
-            <input name="title" id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
-            <div class="form__error-message"></div>
-          </div>
+            <div class="form-content-container">
+              <label for="event-form__event-title" class="event-form__label">Event Title</label>
+              <input name="title" id="event-form__event-title" class="event-form__input" type="text" placeholder="Give it a short distinct name" autocomplete="on" required>
+              <div class="form__error-message"></div>
+            </div>
 
-          <div class="form-content-container">
-            <label for="event-form__event-location" class="event-form__label">
-              Where is your event?
-            </label>
-            <input name="location" id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
-            <div class="form__error-message"></div>
-          </div>
+            <div class="form-content-container">
+              <label for="event-form__event-location" class="event-form__label">
+                Where is your event?
+              </label>
+              <input name="location" id="event-form__event-location" class="event-form__input" type="text" placeholder="Enter a place or location" autocomplete="street-address" required>
+              <div class="form__error-message"></div>
+            </div>
 
-          <div class="form-content-container">
-            <label for="event-form__start-date" class="event-form__label">
-              When does it start?
-            </label>
-            <div class="event-form__start-input">
-              <div>
-                <input name="startDate" id="event-form__start-date" class="event-form__input" type="text" readonly required>
-                <div class="form__error-message"></div>
-                <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-                  <paper-date-picker class="start-date__picker"></paper-date-picker>
-                  <div class="buttons">
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
-                  </div>
-                </paper-dialog>
+            <div class="form-content-container">
+              <label for="event-form__start-date" class="event-form__label">
+                When does it start?
+              </label>
+              <div class="event-form__start-input">
+                <div>
+                  <input name="startDate" id="event-form__start-date" class="event-form__input" type="text" readonly required>
+                  <div class="form__error-message"></div>
+                  <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                    <paper-date-picker class="start-date__picker"></paper-date-picker>
+                    <div class="buttons">
+                      <paper-button dialog-dismiss>Cancel</paper-button>
+                      <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
+                    </div>
+                  </paper-dialog>
+                </div>
+                <div>
+                  <input name="startTime" id="event-form__start-time" class="event-form__input" type="text" readonly required>
+                  <div class="form__error-message"></div>
+                  <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                    <paper-time-picker class="time-picker"></paper-time-picker>
+                    <div class="buttons">
+                      <paper-button dialog-dismiss>Cancel</paper-button>
+                      <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
+                    </div>
+                  </paper-dialog>
+                </div>
               </div>
-              <div>
-                <input name="startTime" id="event-form__start-time" class="event-form__input" type="text" readonly required>
-                <div class="form__error-message"></div>
-                <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-                  <paper-time-picker class="time-picker"></paper-time-picker>
-                  <div class="buttons">
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
-                  </div>
-                </paper-dialog>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__end-date" class="event-form__label">
+                When does it end?
+              </label>
+              <div class="event-form__end-input">
+                <div>
+                  <input name="endDate" id="event-form__end-date" class="event-form__input" type="text" readonly required>
+                  <div class="form__error-message"></div>
+                  <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                    <paper-date-picker class="start-date__picker"></paper-date-picker>
+                    <div class="buttons">
+                      <paper-button dialog-dismiss>Cancel</paper-button>
+                      <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
+                    </div>
+                  </paper-dialog>
+                </div>
+                <div>
+                  <input name="endTime" id="event-form__end-time" class="event-form__input" type="text" readonly required>
+                  <div class="form__error-message"></div>
+                  <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
+                    <paper-time-picker class="time-picker"></paper-time-picker>
+                    <div class="buttons">
+                      <paper-button dialog-dismiss>Cancel</paper-button>
+                      <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
+                    </div>
+                  </paper-dialog>
+                </div>
               </div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__event-type" class="event-form__label">
+                What is the type of event?
+              </label>
+              <input name="type" id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__event-host" class="event-form__label">
+                Who is hosting?
+              </label>
+              <input name="host" id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__event-description" class="event-form__label">
+                Describe your event:
+              </label>
+              <input name="description" id="event-form__description" class="event-form__input" type="text" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__description" class="event-form__label">
+                Who do you want to invite?
+              </label>
+              <input name="members" id="event-form__description" class="event-form__input" type="text" required>
+              <div class="form__error-message"></div>
             </div>
           </div>
 
-          <div class="form-content-container">
-            <label for="event-form__end-date" class="event-form__label">
-              When does it end?
-            </label>
-            <div class="event-form__end-input">
-              <div>
-                <input name="endDate" id="event-form__end-date" class="event-form__input" type="text" readonly required>
-                <div class="form__error-message"></div>
-                <paper-dialog class="start-date__dialog paper-date-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-                  <paper-date-picker class="start-date__picker"></paper-date-picker>
-                  <div class="buttons">
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button class='date-picker__ok-button' dialog-confirm>OK</paper-button>
-                  </div>
-                </paper-dialog>
-              </div>
-              <div>
-                <input name="endTime" id="event-form__end-time" class="event-form__input" type="text" readonly required>
-                <div class="form__error-message"></div>
-                <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
-                  <paper-time-picker class="time-picker"></paper-time-picker>
-                  <div class="buttons">
-                    <paper-button dialog-dismiss>Cancel</paper-button>
-                    <paper-button class='time-ok-button' dialog-confirm>OK</paper-button>
-                  </div>
-                </paper-dialog>
-              </div>
+          <div class="form-section-container">
+            <div class="form-content-container">
+              <button type="submit" class="event-form__submit-button">
+                Create Event
+              </button>
             </div>
           </div>
-
-          <div class="form-content-container">
-            <label for="event-form__event-type" class="event-form__label">
-              What is the type of event?
-            </label>
-            <input name="type" id="event-form__event-type" class="event-form__input" type="text" autocomplete="on" required>
-            <div class="form__error-message"></div>
-          </div>
-
-          <div class="form-content-container">
-            <label for="event-form__event-host" class="event-form__label">
-              Who is hosting?
-            </label>
-            <input name="host" id="event-form__event-host" class="event-form__input" type="text" autocomplete="name" required>
-            <div class="form__error-message"></div>
-          </div>
-
-          <div class="form-content-container">
-            <label for="event-form__event-description" class="event-form__label">
-              Describe your event:
-            </label>
-            <input name="description" id="event-form__description" class="event-form__input" type="text" required>
-            <div class="form__error-message"></div>
-          </div>
-
-          <div class="form-content-container">
-            <label for="event-form__description" class="event-form__label">
-              Who do you want to invite?
-            </label>
-            <input name="members" id="event-form__description" class="event-form__input" type="text" required>
-            <div class="form__error-message"></div>
-          </div>
-        </div>
-
-        <div class="form-section-container">
-          <div class="form-content-container">
-            <button type="submit" class="event-form__submit-button">
-              Create Event
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
 
     <div class="account-creation page">
-      <form class="account-form">
-        <div class="form-section-container">
+      <div class="page__content">
+        <h1 class="page__title">Create Your Account</h1>
+        <form class="account-form">
+          <div class="form-section-container">
 
-          <div class="form-content-container">
-            <label for="account-form__name" class="account-form__label">
-              Your name
-            </label>
-            <input id="account-form__name" class="account-form__input" type="text" autocomplete="name" required>
-            <div class="form__error-message"></div>
+            <div class="form-content-container">
+              <label for="account-form__name" class="account-form__label">
+                Your name
+              </label>
+              <input id="account-form__name" class="account-form__input" type="text" autocomplete="name" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="account-form__email" class="account-form__label">
+                Email address
+              </label>
+              <input id="account-form__email" class="account-form__input" type="email" autocomplete="email" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="account-form__password" class="account-form__label">
+                Password
+              </label>
+              <input id="account-form__password" class="account-form__input" type="password" required>
+              <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="account-form__confirm-password" class="account-form__label">
+                Confirm password
+              </label>
+              <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
+              <div class="form__error-message"></div>
+            </div>
           </div>
 
-          <div class="form-content-container">
-            <label for="account-form__email" class="account-form__label">
-              Email address
-            </label>
-            <input id="account-form__email" class="account-form__input" type="email" autocomplete="email" required>
-            <div class="form__error-message"></div>
+          <div class="form-section-container">
+            <div class="form-content-container">
+              <button type="submit" class="account-form__submit-button">
+                Sign up
+              </button>
+            </div>
           </div>
-
-          <div class="form-content-container">
-            <label for="account-form__password" class="account-form__label">
-              Password
-            </label>
-            <input id="account-form__password" class="account-form__input" type="password" required>
-            <div class="form__error-message"></div>
-          </div>
-
-          <div class="form-content-container">
-            <label for="account-form__confirm-password" class="account-form__label">
-              Confirm password
-            </label>
-            <input id="account-form__confirm-password" class="account-form__input" type="password" required></input>
-            <div class="form__error-message"></div>
-          </div>
-        </div>
-
-        <div class="form-section-container">
-          <div class="form-content-container">
-            <button type="submit" class="account-form__submit-button">
-              Sign up
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
