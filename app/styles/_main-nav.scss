@@ -22,3 +22,22 @@
     text-decoration: none;
   }
 };
+
+
+@media only screen
+  and (min-width: 768px) {
+  .main-nav {
+
+    &__links {
+      justify-content: flex-end;
+    }
+
+    &__home {
+      margin-right: auto;
+    }
+
+    &--link {
+      padding: 15px 30px;
+    }
+  }
+}
