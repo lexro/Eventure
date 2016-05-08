@@ -1,7 +1,68 @@
 import guid from '../utils/guid';
 
 function EventModel () {
-  this.events = {};
+  this.events = {
+    1: {
+      location: '111 1st, San Francisco, CA, United States',
+      title: 'Event Title 1',
+      startTime: '12:00pm',
+      startDate: 'Wed Aug 6, 2017',
+      endTime: '2:00pm',
+      endDate: 'Wed Aug 6, 2017',
+      type: 'Birthday',
+      host: 'Me',
+      description: 'For blah blah\'s birthday',
+      members: ['you', 'sister', 'brother', 'friend']
+    },
+    2: {
+      location: '111 1st, San Francisco, CA, United States',
+      title: 'Event Title 1',
+      startTime: '12:00pm',
+      startDate: 'Wed Aug 6, 2017',
+      endTime: '2:00pm',
+      endDate: 'Wed Aug 6, 2017',
+      type: 'Birthday',
+      host: 'Me',
+      description: 'For blah blah\'s birthday',
+      members: ['you', 'sister', 'brother', 'friend']
+    },
+    3: {
+      location: '111 1st, San Francisco, CA, United States',
+      title: 'Event Title 1',
+      startTime: '12:00pm',
+      startDate: 'Wed Aug 6, 2017',
+      endTime: '2:00pm',
+      endDate: 'Wed Aug 6, 2017',
+      type: 'Birthday',
+      host: 'Me',
+      description: 'For blah blah\'s birthday',
+      members: ['you', 'sister', 'brother', 'friend']
+    },
+    4: {
+      location: '111 1st, San Francisco, CA, United States',
+      title: 'Event Title 1',
+      startTime: '12:00pm',
+      startDate: 'Wed Aug 6, 2017',
+      endTime: '2:00pm',
+      endDate: 'Wed Aug 6, 2017',
+      type: 'Birthday',
+      host: 'Me',
+      description: 'For blah blah\'s birthday',
+      members: ['you', 'sister', 'brother', 'friend']
+    },
+    5: {
+      location: '111 1st, San Francisco, CA, United States',
+      title: 'Event Title 1',
+      startTime: '12:00pm',
+      startDate: 'Wed Aug 6, 2017',
+      endTime: '2:00pm',
+      endDate: 'Wed Aug 6, 2017',
+      type: 'Birthday',
+      host: 'Me',
+      description: 'For blah blah\'s birthday',
+      members: ['you', 'sister', 'brother', 'friend']
+    }
+  };
   this.propertyMap = {
     location: 'location',
     title: 'title',

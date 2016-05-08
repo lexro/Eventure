@@ -5,6 +5,26 @@
     display: flex;
     flex-direction: column;
   }
+
+  &__add-event {
+    background: $default-button-color;
+    border-radius: 50%;
+    color: $primary-white;
+    font-size: 2em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    width: 1.5em;
+
+    &:hover {
+      background: $default-button-color-hover;
+    }
+
+    &:active {
+      background: $default-button-color-active;
+    }
+  }
 }
 
 @media only screen
