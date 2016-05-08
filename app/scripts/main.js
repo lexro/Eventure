@@ -29,6 +29,7 @@ import Controller from './controller';
    * @param {String} path the pathname of the route
    */
   function setView(path) {
+    console.log('path:', path);
     var normalizedPath = getPath(path);
     var route = routes[normalizedPath];
     var state;
