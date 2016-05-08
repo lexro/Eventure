@@ -29,7 +29,8 @@ import Controller from './controller';
    * @param {String} path the pathname of the route
    */
   function setView(path) {
-    var route = routes[path];
+    var normalizedPath = getPath(path);
+    var route = routes[normalizedPath];
     var state;
 
     if (route) {
@@ -41,12 +42,16 @@ import Controller from './controller';
     }
   }
 
+  function getPath (path) {
+    return path.replace('Eventure', ''); // TODO namespace
+  }
+
   // global click handler for routing
   document.addEventListener('click', function (event) {
     var element = event && event.target;
 
     if (element && element.nodeName.toLowerCase() === 'a') {
-      var path = '/' + element.getAttribute('data-name');
+      var path = 'Eventure/' + element.getAttribute('data-name'); // make github pages work
       var target = element.getAttribute('target');
 
       // allow for external links to another window
@@ -65,7 +70,8 @@ import Controller from './controller';
     var route;
 
     if (state !== null) {
-      route = routes[state.path];
+      var normalizedPath = getPath(state.path);
+      route = routes[normalizedPath];
       if (route) {
         route();
       }
