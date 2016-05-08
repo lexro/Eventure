@@ -5,7 +5,7 @@ function DisplayEvents () {
     'jukebox.png',
     'seat.png'
   ];
-  this.baseUrl = '../../images/';
+  this.baseUrl = '../../Eventure/images/'; // TODO figure out how to namespace
   this.imageIndex = 0;
 }
 
