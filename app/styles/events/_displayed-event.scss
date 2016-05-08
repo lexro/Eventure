@@ -1,11 +1,4 @@
 .displayed-event {
-  background:
-    linear-gradient(
-      $hero-tint-color,
-      $hero-tint-color
-    ),
-    url('../../images/candle.png') no-repeat center center;
-  background-size: cover;
   color: $primary-white;
   display: flex;
   flex-direction: column;

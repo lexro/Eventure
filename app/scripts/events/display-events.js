@@ -1,5 +1,12 @@
 function DisplayEvents () {
-
+  this.images = [
+    'candle.png',
+    'car.png',
+    'jukebox.png',
+    'seat.png'
+  ];
+  this.baseUrl = '../../images/';
+  this.imageIndex = 0;
 }
 
 /**
@@ -13,7 +20,8 @@ DisplayEvents.prototype.generateHTML = function (events) {
 
   for (var eventId in events) {
     let event = events[eventId];
-    let eventHtml = '<div class="displayed-event">' +
+    let style = this._getBackgroundImageStyle();
+    let eventHtml = '<div class="displayed-event" style="' + style + '">' +
         '<div class="displayed-event__actions">' +
         '<span class="displayed-event__delete">' + 'X'+ '</span>' +
         '</div>' +
@@ -27,5 +35,24 @@ DisplayEvents.prototype.generateHTML = function (events) {
 
   return html;
 };
+
+// TODO figure out a better way to programmtically attached the background images
+DisplayEvents.prototype._getBackgroundImageStyle = function () {
+  var index = this._getImageIndex();
+  var imageUrl = this.baseUrl + this.images[index];
+  var style = `background: linear-gradient(rgba(0, 0, 0, .4),rgba(0, 0, 0, .4)),url(${imageUrl}) no-repeat center center; background-size: cover;`;
+
+  return style;
+};
+
+// go through all images and back
+DisplayEvents.prototype._getImageIndex = function () {
+  if (this.imageIndex === this.images.length) {
+    this.imageIndex = 0;
+  }
+
+  return this.imageIndex++;
+};
+
 
 export default DisplayEvents;
