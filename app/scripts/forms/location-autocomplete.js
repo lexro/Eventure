@@ -1,4 +1,6 @@
 function LocationAutoCompelete (inputElement) {
+  var google = window.google;
+
   if (google && google.maps && google.maps.places) {
     this.autocomplete = new google.maps.places.Autocomplete(inputElement);
     this.geolocate();
