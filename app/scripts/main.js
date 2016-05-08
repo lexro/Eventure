@@ -44,7 +44,7 @@ import Controller from './controller';
   }
 
   function getPath (path) {
-    return path.replace('Eventure', ''); // TODO namespace
+    return path.replace('/Eventure', ''); // TODO namespace
   }
 
   // global click handler for routing
@@ -52,7 +52,7 @@ import Controller from './controller';
     var element = event && event.target;
 
     if (element && element.nodeName.toLowerCase() === 'a') {
-      var path = 'Eventure/' + element.getAttribute('data-name'); // make github pages work
+      var path = '/Eventure/' + element.getAttribute('data-name'); // make github pages work
       var target = element.getAttribute('target');
 
       // allow for external links to another window
