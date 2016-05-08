@@ -3,7 +3,6 @@ import EventForm from './events/event-form';
 import EventModel from './events/event-model';
 import AccountForm from './accounts/account-form';
 
-
 /**
  * The king
  */

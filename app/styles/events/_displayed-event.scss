@@ -17,4 +17,30 @@
   &__location {
     color: $secondary-white;
   }
+
+  &__item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__delete {
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    &:hover {
+      background: $hero-tint-color;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: auto;
+  }
 }
