@@ -7,7 +7,8 @@ import moment from 'moment';
 function EventForm () {
   this.selector = '.event-form';
   var eventForm = this.getEventForm();
-  this.formValidation = new FormValidation(eventForm);
+  var submitButton = eventForm.querySelector('.event-form__submit-button');
+  this.formValidation = new FormValidation(eventForm, submitButton);
 
   eventForm.addEventListener('submit', function (event) {
     var eventData = this._serializeArray();

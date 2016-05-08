@@ -14,7 +14,8 @@ function AccountForm() {
   };
   this.debounceTime = 250;
   var formElement = document.querySelector(this.selector);
-  this.formValidation = new FormValidation(formElement);
+  var submitButton = formElement.querySelector(this.selectors.submitButton);
+  this.formValidation = new FormValidation(formElement, submitButton);
   this.accountFormValidator = new AccountFormValidator();
   this._setupValidation();
 }
