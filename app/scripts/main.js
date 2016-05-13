@@ -29,14 +29,15 @@ import Controller from './controller';
    * @param {String} path the pathname of the route
    */
   function setView(path) {
-    var route = routes[path];
+    var normalizedPath = getNormalizedPath(path);
+    var route = routes[normalizedPath];
     var state;
 
     if (route) {
       state = {
         path: path
       };
-      history.pushState(state, null, path);
+      // history.pushState(state, null, path);
       route();
     }
   }
@@ -46,7 +47,7 @@ import Controller from './controller';
     var element = event && event.target;
 
     if (element && element.nodeName.toLowerCase() === 'a') {
-      var path = '/' + element.getAttribute('data-name');
+      var path = baseUrl + '/' + element.getAttribute('data-name');
       var target = element.getAttribute('target');
 
       // allow for external links to another window
@@ -63,9 +64,11 @@ import Controller from './controller';
   window.addEventListener('popstate', function (event) {
     var state = event.state;
     var route;
+    var normalizedPath;
 
     if (state !== null) {
-      route = routes[state.path];
+      normalizedPath = getNormalizedPath(state.path);
+      route = routes[normalizedPath];
       if (route) {
         route();
       }
@@ -78,4 +81,10 @@ import Controller from './controller';
 
     setView(path);
   });
+
+  var baseUrl = '/Eventure';
+
+  function getNormalizedPath (path) {
+    return path.replace(baseUrl, '');
+  }
 })();
