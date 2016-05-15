@@ -1,9 +1,9 @@
 function DisplayEvents () {
   this.images = [
-    'candle.png',
-    'car.png',
-    'jukebox.png',
-    'seat.png'
+    'candle.jpg',
+    'car.jpg',
+    'jukebox.jpg',
+    'seat.jpg'
   ];
   this.baseUrl = 'images/';
   this.imageIndex = 0;

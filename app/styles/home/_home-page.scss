@@ -6,7 +6,7 @@
         $hero-tint-color
       ),
       /* Image credit goes to Moyan Brenn and used as is under Creative Commons CC-BY-2.0 */
-      url('../images/rome.jpg') no-repeat center center fixed;
+      url('../images/rome-mobile.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - #{$nav-height});
   }
@@ -53,6 +53,18 @@
 @media only screen
   and (min-width: 768px) {
   .home {
+    &__hero {
+      background:
+        linear-gradient(
+          $hero-tint-color,
+          $hero-tint-color
+        ),
+        /* Image credit goes to Moyan Brenn and used as is under Creative Commons CC-BY-2.0 */
+        url('../images/rome.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: calc(100vh - #{$nav-height});
+    }
+
     &__title {
       font-size: 48px;
     }
