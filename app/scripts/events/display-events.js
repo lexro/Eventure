@@ -22,9 +22,6 @@ DisplayEvents.prototype.generateHTML = function (events) {
     let event = events[eventId];
     let style = this._getBackgroundImageStyle();
     let eventHtml = '<div class="displayed-event" style="' + style + '">' +
-        '<div class="displayed-event__actions">' +
-        '<span class="displayed-event__delete">' + 'X'+ '</span>' +
-        '</div>' +
         '<span class="displayed-event__item">' + event.title + ' hosted by ' + event.host + '</span>' +
         '<span class="displayed-event__item">' + event.startDate + ' ' + event.startTime + '</span>' +
         '<span class="displayed-event__item displayed-event__location">' + event.location + '</span>' +

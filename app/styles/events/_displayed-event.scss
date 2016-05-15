@@ -18,12 +18,12 @@
   }
 
   &__delete {
-    border: 1px solid $primary-white;
+    border: 2px solid $primary-white;
     border-radius: 50%;
     cursor: pointer;
     width: 28px;
     height: 28px;
-    line-height: 28px;
+    line-height: 23px;
     text-align: center;
 
     &:hover {
