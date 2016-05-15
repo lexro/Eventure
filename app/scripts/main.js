@@ -37,11 +37,7 @@ import Controller from './controller';
       state = {
         path: path
       };
-<<<<<<< HEAD
-      //history.pushState(state, null, path);
-=======
       // history.pushState(state, null, path);
->>>>>>> b8a408a... trying without history
       route();
     }
   }
