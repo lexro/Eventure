@@ -5,7 +5,7 @@ function DisplayEvents () {
     'jukebox.png',
     'seat.png'
   ];
-  this.baseUrl = '../../images/';
+  this.baseUrl = 'images/';
   this.imageIndex = 0;
 }
 
