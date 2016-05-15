@@ -123,12 +123,16 @@ EventForm.prototype.setupTime = function (timeInputElement) {
   });
 
   // set the initial value
-  timeInputElement.value = timePickerElement.time;
+  timeInputElement.value = this._formatTime(Date.now());
   this.formValidation.addErrorMessage(timeInputElement);
 };
 
 EventForm.prototype._formatDate = function (date) {
   return moment(date).format('ddd LL');
+};
+
+EventForm.prototype._formatTime = function (time) {
+  return moment(time).format('hh:mm A');
 };
 
 /**
