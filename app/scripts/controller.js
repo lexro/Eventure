@@ -44,8 +44,7 @@ Controller.prototype.renderDisplayEvents = function () {
 };
 
 Controller.prototype._addEvent = function(event) {
-  var eventForm = this.eventForm.getEventForm();
-  eventForm.reset();
+  this.eventForm.reset();
 
   this.eventModel.addEvent(event.detail.data);
   this.renderDisplayEvents();

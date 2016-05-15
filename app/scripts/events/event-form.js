@@ -181,4 +181,29 @@ EventForm.prototype._serializeArray = function () {
   return eventData;
 };
 
+/**
+ * Reset form to original state.
+ */
+EventForm.prototype.reset = function () {
+  var eventForm = this.getEventForm();
+
+  // reset validation
+  for (var i = 0; i < eventForm.length; i++) {
+    let element = eventForm.elements[i];
+
+    if (element && element.nodeName.toLowerCase() === 'input') {
+      this.formValidation.reset(element);
+    }
+  }
+
+  // clear fields
+  eventForm.reset();
+
+  // initialize date and time
+  this._initTime(this.timeStartElement);
+  this._initTime(this.timeEndElement);
+  this._initDate(this.startDateElement);
+  this._initDate(this.endDateElement);
+}
+
 export default EventForm;

@@ -54,7 +54,7 @@ FormValidation.prototype.setup = function () {
  *
  * @param {HTMLElement} input - the input element
  */
-FormValidation.prototype.addErrorMessage  = function (input) {
+FormValidation.prototype.addErrorMessage = function (input) {
   var errorElement = input.parentElement.querySelector('.form__error-message') || {};
 
   if (!input.validity.valid) {
@@ -69,6 +69,15 @@ FormValidation.prototype.addErrorMessage  = function (input) {
     errorElement.textContent = '';
     input.classList.remove('form__input-invalid');
     input.classList.add('form__input-valid');
+  }
+};
+
+FormValidation.prototype.reset = function (input) {
+  if (input) {
+    input.classList.remove('form__input-valid');
+    input.classList.remove('form__input-invalid');
+    var errorElement = input.parentElement.querySelector('.form__error-message') || {};
+    errorElement.textContent = '';
   }
 };
 
