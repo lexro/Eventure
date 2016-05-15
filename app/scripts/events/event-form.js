@@ -26,25 +26,25 @@ function EventForm () {
   this.locationAutoComplete = new LocationAutoCompelete(locationFieldElement);
 
   var startDateSelector = '#event-form__start-date';
-  var startDateElement = document.querySelector(startDateSelector);
-  this.setupDate(startDateElement);
+  this.startDateElement = document.querySelector(startDateSelector);
+  this._setupDate(this.startDateElement);
 
   var endDateSelector = '#event-form__end-date';
-  var endDateElement = document.querySelector(endDateSelector);
-  this.setupDate(endDateElement);
+  this.endDateElement = document.querySelector(endDateSelector);
+  this._setupDate(this.endDateElement);
 
   var timeStartSelector = '#event-form__start-time';
-  var timeStartElement = document.querySelector(timeStartSelector);
-  this.setupTime(timeStartElement);
+  this.timeStartElement = document.querySelector(timeStartSelector);
+  this._setupTime(this.timeStartElement);
 
   var timeEndSelector = '#event-form__end-time';
-  var timeEndElement = document.querySelector(timeEndSelector);
-  this.setupTime(timeEndElement);
+  this.timeEndElement = document.querySelector(timeEndSelector);
+  this._setupTime(this.timeEndElement);
 
-  this.setupAutoDate(startDateElement, endDateElement);
+  this._setupAutoDate(this.startDateElement, this.endDateElement);
 }
 
-EventForm.prototype.setupAutoDate = function (startDateElement, endDateElement) {
+EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement) {
   var _this = this;
 
   startDateElement.addEventListener('change', function () {
@@ -70,7 +70,10 @@ EventForm.prototype.setupAutoDate = function (startDateElement, endDateElement) 
   });
 };
 
-EventForm.prototype.setupDate = function (dateInputElement) {
+/**
+ * Setup the date field to work with the date ui
+ */
+EventForm.prototype._setupDate = function (dateInputElement) {
   var _this = this;
   var parentElement = dateInputElement.parentElement;
   var dialogElement = parentElement.querySelector('.start-date__dialog');
@@ -96,12 +99,13 @@ EventForm.prototype.setupDate = function (dateInputElement) {
     dateInputElement.value = _this._formatDate(datePickerElement.date);
   });
 
-  // set the initial value to today's date
-  dateInputElement.value = _this._formatDate(datePickerElement.date);
-  _this.formValidation.addErrorMessage(dateInputElement);
+  this._initDate(dateInputElement);
 };
 
-EventForm.prototype.setupTime = function (timeInputElement) {
+/**
+ * Setup the time field with the time ui
+ */
+EventForm.prototype._setupTime = function (timeInputElement) {
   var parentElement = timeInputElement.parentElement;
   var dialogElement = parentElement.querySelector('.time-dialog');
 
@@ -122,9 +126,7 @@ EventForm.prototype.setupTime = function (timeInputElement) {
     timeInputElement.value = timePickerElement.time;
   });
 
-  // set the initial value
-  timeInputElement.value = this._formatTime(Date.now());
-  this.formValidation.addErrorMessage(timeInputElement);
+  this._initTime(timeInputElement);
 };
 
 EventForm.prototype._formatDate = function (date) {
@@ -133,6 +135,16 @@ EventForm.prototype._formatDate = function (date) {
 
 EventForm.prototype._formatTime = function (time) {
   return moment(time).format('hh:mm A');
+};
+
+EventForm.prototype._initDate = function (dateInputElement) {
+  dateInputElement.value = this._formatDate(Date.now());
+  this.formValidation.addErrorMessage(dateInputElement);
+};
+
+EventForm.prototype._initTime = function (timeInputElement) {
+  timeInputElement.value = this._formatTime(Date.now());
+  this.formValidation.addErrorMessage(timeInputElement);
 };
 
 /**
