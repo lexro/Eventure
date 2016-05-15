@@ -11,13 +11,15 @@ function EventForm () {
   this.formValidation = new FormValidation(eventForm, submitButton);
 
   eventForm.addEventListener('submit', function (event) {
-    var eventData = this._serializeArray();
-    var addEvent = document.createEvent('CustomEvent');
+    if(!form.checkValidity()) {
+      var eventData = this._serializeArray();
+      var addEvent = document.createEvent('CustomEvent');
 
-    addEvent.initCustomEvent('addEvent', true, true, {
-      data: eventData
-    });
-    eventForm.dispatchEvent(addEvent);
+      addEvent.initCustomEvent('addEvent', true, true, {
+        data: eventData
+      });
+      eventForm.dispatchEvent(addEvent);
+    }
 
     event.preventDefault();
   }.bind(this));
