@@ -150,17 +150,17 @@ EventForm.prototype.getEventForm = function () {
  */
 EventForm.prototype._serializeArray = function () {
   var eventForm = this.getEventForm();
-  var formEntries = new FormData(eventForm).entries();
   var eventData = [];
 
-  for (var value of formEntries) {
-    let name = value[0];
-    let formValue = value[1];
+  for (var i = 0; i < eventForm.length; i++) {
+    let element = eventForm.elements[0];
 
-    eventData.push({
-      name: name,
-      value: formValue
-    });
+    if (element && element.nodeName.toLowerCase() === 'input') {
+      eventData.push({
+        name: element.name || '',
+        value: element.value || ''
+      });
+    }
   }
 
   return eventData;
