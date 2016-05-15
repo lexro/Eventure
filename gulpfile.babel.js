@@ -10,6 +10,8 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import babel from 'babelify';
 import ghPages from 'gulp-gh-pages';
+var vulcanize = require('gulp-vulcanize');
+var merge = require('merge-stream');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -67,9 +69,9 @@ gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 gulp.task('html', ['styles', 'scripts'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssnano()))
-    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    // .pipe($.if('*.js', $.uglify()))
+    // .pipe($.if('*.css', $.cssnano()))
+    // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));
 });
 
@@ -93,12 +95,27 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('extras', () => {
-  return gulp.src([
-    'app/*.*',
-    '!app/*.html'
+  var app = gulp.src([
+    'app/*',
+    '!app/test',
+    '!app/elements',
+    '!app/bower_components',
+    '!app/cache-config.json',
+    '!**/.DS_Store'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
+
+  // Copy over only the bower_components we need
+  // These are things which cannot be vulcanized
+  var bower = gulp.src([
+    'bower_components/{webcomponentsjs,moment,web-animations-js}/**/*'
+  ]).pipe(gulp.dest('dist/bower_components'));
+
+  return merge(app, bower)
+    .pipe($.size({
+      title: 'copy'
+    }));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
@@ -111,6 +128,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
       baseDir: ['.tmp', 'app'],
       routes: {
         '/bower_components': 'bower_components'
+        // '/Eventure': 'app'
       },
       middleware: [ historyApiFallback() ]
     }
@@ -172,8 +190,24 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
+gulp.task('vulcanize', function () {
+  return gulp.src('app/elements/elements.html')
+    .pipe(vulcanize({
+      abspath: '',
+      excludes: [],
+      stripExcludes: false,
+      stripComments: true
+    }))
+    .pipe(gulp.dest('dist/elements'));
+});
+
+// Copy all files at the root level (app)
+gulp.task('copy', function() {
+
+});
+
 // TODO: add back linter with es6 presets
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'vulcanize'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
