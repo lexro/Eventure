@@ -156,7 +156,7 @@ EventForm.prototype._serializeArray = function () {
   var eventData = [];
 
   for (var i = 0; i < eventForm.length; i++) {
-    let element = eventForm.elements[0];
+    let element = eventForm.elements[i];
 
     if (element && element.nodeName.toLowerCase() === 'input') {
       eventData.push({
