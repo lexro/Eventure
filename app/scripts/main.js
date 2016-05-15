@@ -36,7 +36,7 @@ import Controller from './controller';
       state = {
         path: path
       };
-      history.pushState(state, null, path);
+      //history.pushState(state, null, path);
       route();
     }
   }
