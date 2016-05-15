@@ -10,6 +10,7 @@ import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import babel from 'babelify';
 import ghPages from 'gulp-gh-pages';
+import merge from 'merge-stream';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -93,12 +94,25 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('extras', () => {
-  return gulp.src([
-    'app/*.*',
-    '!app/*.html'
+  var app = gulp.src([
+    'app/*',
+    '!app/*.html',
+    '!app/bower_components',
+    '!**/.DS_Store'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
+
+  // Copy over only the bower_components we need
+  // These are things which cannot be vulcanized
+  var bower = gulp.src([
+    'bower_components/**/*'
+  ]).pipe(gulp.dest('dist/bower_components'));
+
+  return merge(app, bower)
+    .pipe($.size({
+      title: 'copy'
+    }));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
