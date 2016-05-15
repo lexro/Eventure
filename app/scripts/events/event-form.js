@@ -48,7 +48,6 @@ EventForm.prototype.setupAutoDate = function (startDateElement, endDateElement) 
   var _this = this;
 
   startDateElement.addEventListener('change', function () {
-    console.log('anything');
     var startDate = startDateElement.parentNode.querySelector('.start-date__picker').date;
     var endDate = endDateElement.parentNode.querySelector('.start-date__picker').date;
 
