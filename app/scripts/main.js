@@ -13,10 +13,10 @@ import Controller from './controller';
       eventPlannerApp.controller.render('home');
     },
     '/create': function () {
-      eventPlannerApp.controller.render('event-creation');
+      eventPlannerApp.controller.renderEventCreation();
     },
     '/signup': function () {
-      eventPlannerApp.controller.render('account-creation');
+      eventPlannerApp.controller.renderAccountCreation();
     },
     '/display': function () {
       eventPlannerApp.controller.renderDisplayEvents();

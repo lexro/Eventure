@@ -20,6 +20,10 @@ function AccountForm() {
   this._setupValidation();
 }
 
+AccountForm.prototype.getAccountForm = function () {
+  return document.querySelector(this.selector);
+};
+
 /**
  * Adds listeners on form elements for validation
  */
