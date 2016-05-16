@@ -11,7 +11,7 @@ function EventForm () {
   this.formValidation = new FormValidation(eventForm, submitButton);
 
   eventForm.addEventListener('submit', function (event) {
-    if(!form.checkValidity()) {
+    if (eventForm.checkValidity()) {
       var eventData = this._serializeArray();
       var addEvent = document.createEvent('CustomEvent');
 
@@ -19,9 +19,8 @@ function EventForm () {
         data: eventData
       });
       eventForm.dispatchEvent(addEvent);
+      event.preventDefault();
     }
-
-    event.preventDefault();
   }.bind(this));
 
   var locationFieldElement = eventForm.querySelector('#event-form__event-location');
