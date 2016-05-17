@@ -20,6 +20,7 @@ This should open up `Eventure` in your default browser at `http://localhost:9000
 
 ## Feature Set ##
 This application has the following features:
+
 1. Single page app
 2. Home page with nav menu and hero image
 3. Event creation
