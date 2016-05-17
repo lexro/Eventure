@@ -11,6 +11,8 @@ import buffer from 'vinyl-buffer';
 import babel from 'babelify';
 import ghPages from 'gulp-gh-pages';
 import merge from 'merge-stream';
+import vulcanize from 'gulp-vulcanize';
+
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -186,8 +188,18 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
+gulp.task('vulcanize', function () {
+  return gulp.src('app/elements/elements.html')
+    .pipe(vulcanize({
+      stripComments: true,
+      inlineCss: true,
+      inlineScripts: true
+    }))
+    .pipe(gulp.dest('dist/elements'));
+});
+
 // TODO: add back linter with es6 presets
-gulp.task('build', ['html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'vulcanize'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
