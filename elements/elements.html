@@ -14708,7 +14708,7 @@ It will also ensure that focus remains in the dialog.
   };
 
 </script>
-<script src="../../bower_components/web-animations-js/web-animations-next-lite.min.js">// Copyright 2014 Google Inc. All rights reserved.
+<script>// Copyright 2014 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15962,7 +15962,7 @@ It will also ensure that focus remains in the dialog.
     })();
   </script>
 </dom-module>
-<script src="../../bower_components/moment/min/moment-with-locales.js">;(function (global, factory) {
+<script>;(function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
     global.moment = factory()
@@ -17843,7 +17843,7 @@ It will also ensure that focus remains in the dialog.
     // MOMENTS
 
     // keepLocalTime = true means only change the timezone, without
-    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]--\x3e
     // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
     // +0200, so we adjust the time as needed, to be valid.
     //
@@ -24219,7 +24219,7 @@ It will also ensure that focus remains in the dialog.
             return false;
         }
         if (number < 0) {
-            // Negative Number --> always true
+            // Negative Number --\x3e always true
             return true;
         } else if (number < 10) {
             // Only 1 digit
@@ -24235,7 +24235,7 @@ It will also ensure that focus remains in the dialog.
             }
             return eifelerRegelAppliesToNumber(lastDigit);
         } else if (number < 10000) {
-            // 3 or 4 digits --> recursively check first digit
+            // 3 or 4 digits --\x3e recursively check first digit
             while (number >= 10) {
                 number = number / 10;
             }
