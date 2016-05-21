@@ -64,7 +64,7 @@ FormValidation.prototype.addErrorMessage = function (input) {
     errorElement.textContent = validationMessage;
     input.classList.remove('form__input-valid');
     input.classList.add('form__input-invalid');
-  } else {
+  } else if (input.value) {
     // remove any validation message for valid values
     errorElement.textContent = '';
     input.classList.remove('form__input-invalid');
