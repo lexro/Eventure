@@ -18,6 +18,17 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__label-description {
+    @extend %form__label;
+    vertical-align: top;
+  }
+
+  &__description {
+    border: 3px solid $border-grey;
+    resize: none;
+    overflow-y: scroll;
+  }
 }
 
 #event-form__end-time,

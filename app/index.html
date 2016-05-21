@@ -159,11 +159,18 @@
             </div>
 
             <div class="form-content-container">
-              <label for="event-form__description" class="event-form__label">
+              <label for="event-form__invite" class="event-form__label">
                 Who do you want to invite?
               </label>
-              <input name="members" id="event-form__description" class="event-form__input" type="text" placeholder="Enter your invitee names" required>
+              <input name="members" id="event-form__invite" class="event-form__input" type="text" placeholder="Enter your guest names" required>
               <div class="form__error-message"></div>
+            </div>
+
+            <div class="form-content-container">
+              <label for="event-form__description" class="event-form__label-description">
+                Message for your guests
+              </label>
+              <textarea name="description" id="event-form__description" class="event-form__input event-form__description" type="text" placeholder="Make it short and sweet" rows=5 maxlength="250"></textarea>
             </div>
           </div>
 
