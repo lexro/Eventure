@@ -146,7 +146,16 @@
               <label for="event-form__event-type" class="event-form__label">
                 What is the type of event?
               </label>
-              <input name="type" id="event-form__event-type" class="event-form__input" type="text" placeholder="Birthday, Meetup, Dinner, etc." autocomplete="on" required>
+              <input name="type" list="event-types" id="event-form__event-type" class="event-form__input" type="text" placeholder="Birthday, Meetup, Dinner, etc." autocomplete="on" required>
+              <datalist id="event-types">
+                <option value="Birthday">
+                <option value="Dinner">
+                <option value="Party">
+                <option value="Work">
+                <option value="School">
+                <option value="Brunch">
+                <option value="Meetup">
+              </datalist>
               <div class="form__error-message"></div>
             </div>
 
