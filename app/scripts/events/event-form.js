@@ -43,6 +43,7 @@ function EventForm () {
   this._setupTime(this.timeEndElement);
 
   this._setupAutoDate(this.startDateElement, this.endDateElement);
+  this._setupAutoTime();
 }
 
 EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement) {
@@ -56,18 +57,54 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
       endDate = moment(startDate).add(1, 'days');
       endDateElement.value = _this._formatDate(endDate);
     }
-
   });
 
   endDateElement.addEventListener('change', function () {
-    var startDate = startDateElement.date;
-    var endDate = endDateElement.date;
+    var startDate = startDateElement.parentNode.querySelector('.start-date__picker').date;
+    var endDate = endDateElement.parentNode.querySelector('.start-date__picker').date;
 
     if (moment(endDate).isBefore(startDate)) {
-      startDate = moment(startDate).subtract(1, 'days');
+      startDate = moment(endDate).subtract(1, 'days');
       startDateElement.value = _this._formatDate(startDate);
     }
+  });
+};
 
+EventForm.prototype._setupAutoTime = function () {
+  var timeStartElement = this.timeStartElement;
+  var timeEndElement = this.timeEndElement;
+  var _this = this;
+
+  timeStartElement.addEventListener('change', function () {
+    var startDate = _this.startDateElement.parentNode.querySelector('.start-date__picker').date;
+    var endDate = _this.endDateElement.parentNode.querySelector('.start-date__picker').date;
+
+    if (moment(startDate).isSame(endDate)) {
+      var startTime = timeStartElement.parentNode.querySelector('.time-picker').rawValue;
+      var endTime = timeEndElement.parentNode.querySelector('.time-picker').rawValue;
+
+      if (startTime > endTime) {
+        timeEndElement.setCustomValidity('End time must come after start time');
+      }
+    }
+
+    _this.formValidation.addErrorMessage(timeEndElement);
+  });
+
+  timeEndElement.addEventListener('change', function () {
+    var startDate = _this.startDateElement.parentNode.querySelector('.start-date__picker').date;
+    var endDate = _this.endDateElement.parentNode.querySelector('.start-date__picker').date;
+
+    if (moment(startDate).isSame(endDate)) {
+      var startTime = timeStartElement.parentNode.querySelector('.time-picker').rawValue;
+      var endTime = timeEndElement.parentNode.querySelector('.time-picker').rawValue;
+
+      if (startTime > endTime) {
+        timeStartElement.setCustomValidity('Start time must come before end time');
+      }
+    }
+
+    _this.formValidation.addErrorMessage(timeStartElement);
   });
 };
 
@@ -98,6 +135,10 @@ EventForm.prototype._setupDate = function (dateInputElement) {
 
   okButton.addEventListener('click', function () {
     dateInputElement.value = _this._formatDate(datePickerElement.date);
+    var changeEvent = document.createEvent('HTMLEvents');
+
+    changeEvent.initEvent('change', true, true);
+    dateInputElement.dispatchEvent(changeEvent);
   });
 
   this._initDate(dateInputElement);
@@ -120,11 +161,19 @@ EventForm.prototype._setupTime = function (timeInputElement) {
   // click event is not triggered on mobile for the date picker
   okButton.addEventListener('touchend', function (event) {
     timeInputElement.value = timePickerElement.time;
+    var changeEvent = document.createEvent('HTMLEvents');
+
+    changeEvent.initEvent('change', true, true);
+    timeInputElement.dispatchEvent(changeEvent);
     event.preventDefault();
   });
 
   okButton.addEventListener('click', function () {
     timeInputElement.value = timePickerElement.time;
+    var changeEvent = document.createEvent('HTMLEvents');
+
+    changeEvent.initEvent('change', true, true);
+    timeInputElement.dispatchEvent(changeEvent);
   });
 
   this._initTime(timeInputElement);
@@ -144,7 +193,10 @@ EventForm.prototype._initDate = function (dateInputElement) {
 };
 
 EventForm.prototype._initTime = function (timeInputElement) {
-  timeInputElement.value = this._formatTime(Date.now());
+  var now = this._formatTime(Date.now());
+  var timePicker = timeInputElement.parentElement.querySelector('.time-picker');
+  timePicker.time = now;
+  timeInputElement.value = now;
   this.formValidation.addErrorMessage(timeInputElement);
 };
 
@@ -205,6 +257,6 @@ EventForm.prototype.reset = function () {
   this._initTime(this.timeEndElement);
   this._initDate(this.startDateElement);
   this._initDate(this.endDateElement);
-}
+};
 
 export default EventForm;

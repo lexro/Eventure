@@ -99,8 +99,8 @@
                   </paper-dialog>
                 </div>
                 <div>
-                  <input name="startTime" id="event-form__start-time" class="event-form__input" type="text" readonly required>
-                  <div class="form__error-message"></div>
+                  <input name="startTime" id="event-form__start-time" class="event-form__input" type="text" required>
+                  <div class="form__error-message event-form__time-error"></div>
                   <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
                     <paper-time-picker class="time-picker"></paper-time-picker>
                     <div class="buttons">
@@ -129,8 +129,8 @@
                   </paper-dialog>
                 </div>
                 <div>
-                  <input name="endTime" id="event-form__end-time" class="event-form__input" type="text" readonly required>
-                  <div class="form__error-message"></div>
+                  <input name="endTime" id="event-form__end-time" class="event-form__input" type="text" required>
+                  <div class="form__error-message event-form__time-error"></div>
                   <paper-dialog class="time-dialog paper-time-picker-dialog" modal on-iron-overlay-closed="dismissDialog">
                     <paper-time-picker class="time-picker"></paper-time-picker>
                     <div class="buttons">

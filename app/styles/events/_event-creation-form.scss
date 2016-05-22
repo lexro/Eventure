@@ -29,6 +29,10 @@
     resize: none;
     overflow-y: scroll;
   }
+
+  &__time-error {
+    width: 100px;
+  }
 }
 
 #event-form__end-time,
@@ -43,6 +47,11 @@
   width: 100px;
 }
 
+#event-form__end-date,
+#event-form__start-date {
+    width: 150px;
+}
+
 @media only screen
   and (min-width: 768px) {
   .event-form {
@@ -51,11 +60,11 @@
       display: inline-flex;
       justify-content: flex-start;
     }
-  }
 
-  #event-form__end-date,
-  #event-form__start-date {
-    width: 150px;
+    &__time-error {
+      width: 100px;
+      margin: 0;
+    }
   }
 
   #event-form__end-time,
