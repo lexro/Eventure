@@ -45,14 +45,14 @@ Controller.prototype.renderDisplayEvents = function () {
 
 Controller.prototype.renderEventCreation = function () {
   var eventForm = this.eventForm.getEventForm();
-  eventForm.elements[0].setAttribute('autofocus', true);
   this.render('event-creation');
+  eventForm.elements[0].focus();
 };
 
 Controller.prototype.renderAccountCreation = function () {
   var accountForm = this.accountForm.getAccountForm();
-  accountForm.elements[0].setAttribute('autofocus', true);
   this.render('account-creation');
+  accountForm.elements[0].focus();
 };
 
 Controller.prototype._addEvent = function(event) {
