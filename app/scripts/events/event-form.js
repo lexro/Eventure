@@ -57,6 +57,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
       endDate = moment(startDate).add(1, 'days');
       endDateElement.value = _this._formatDate(endDate);
     }
+
+    _this._timeValidation();
   });
 
   endDateElement.addEventListener('change', function () {
@@ -67,6 +69,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
       startDate = moment(endDate).subtract(1, 'days');
       startDateElement.value = _this._formatDate(startDate);
     }
+
+    _this._timeValidation();
   });
 };
 
