@@ -50,8 +50,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
   var _this = this;
 
   startDateElement.addEventListener('change', function () {
-    var startDate = startDateElement.parentNode.querySelector('.start-date__picker').date;
-    var endDate = endDateElement.parentNode.querySelector('.start-date__picker').date;
+    var startDate = startDateElement.value;
+    var endDate = endDateElement.value;
 
     if (moment(startDate).isAfter(endDate)) {
       endDate = moment(startDate).add(1, 'days');
@@ -62,8 +62,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
   });
 
   endDateElement.addEventListener('change', function () {
-    var startDate = startDateElement.parentNode.querySelector('.start-date__picker').date;
-    var endDate = endDateElement.parentNode.querySelector('.start-date__picker').date;
+    var startDate = startDateElement.value;
+    var endDate = endDateElement.value;
 
     if (moment(endDate).isBefore(startDate)) {
       startDate = moment(endDate).subtract(1, 'days');
@@ -85,8 +85,8 @@ EventForm.prototype._setupAutoTime = function () {
 EventForm.prototype._timeValidation = function () {
   var timeStartElement = this.timeStartElement;
   var timeEndElement = this.timeEndElement;
-  var startDate = this.startDateElement.parentNode.querySelector('.start-date__picker').date;
-  var endDate = this.endDateElement.parentNode.querySelector('.start-date__picker').date;
+  var startDate = this.startDateElement.value;
+  var endDate = this.endDateElement.value;
 
   if (moment(startDate).isSame(endDate)) {
     var startTimePicker = timeStartElement.parentNode.querySelector('.time-picker');
