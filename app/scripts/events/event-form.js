@@ -73,39 +73,52 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
 EventForm.prototype._setupAutoTime = function () {
   var timeStartElement = this.timeStartElement;
   var timeEndElement = this.timeEndElement;
-  var _this = this;
 
-  timeStartElement.addEventListener('change', function () {
-    var startDate = _this.startDateElement.parentNode.querySelector('.start-date__picker').date;
-    var endDate = _this.endDateElement.parentNode.querySelector('.start-date__picker').date;
+  timeStartElement.addEventListener('change', this._timeValidation.bind(this));
+  timeEndElement.addEventListener('change', this._timeValidation.bind(this));
+};
 
-    if (moment(startDate).isSame(endDate)) {
-      var startTime = timeStartElement.parentNode.querySelector('.time-picker').rawValue;
-      var endTime = timeEndElement.parentNode.querySelector('.time-picker').rawValue;
+EventForm.prototype._timeValidation = function () {
+  var timeStartElement = this.timeStartElement;
+  var timeEndElement = this.timeEndElement;
+  var startDate = this.startDateElement.parentNode.querySelector('.start-date__picker').date;
+  var endDate = this.endDateElement.parentNode.querySelector('.start-date__picker').date;
 
-      if (startTime > endTime) {
-        timeEndElement.setCustomValidity('End time must come after start time');
-      }
+  if (moment(startDate).isSame(endDate)) {
+    var startTimePicker = timeStartElement.parentNode.querySelector('.time-picker');
+    var endTimePicker = timeEndElement.parentNode.querySelector('.time-picker');
+    var startTime = this._getRawValue(startTimePicker);
+    var endTime = this._getRawValue((endTimePicker));
+
+    if (startTime > endTime) {
+      timeStartElement.setCustomValidity('Start time must come before end time');
+      timeEndElement.setCustomValidity('End time must come after start time');
+    } else {
+      timeStartElement.setCustomValidity('');
+      timeEndElement.setCustomValidity('');
     }
+  }
 
-    _this.formValidation.addErrorMessage(timeEndElement);
-  });
+  this.formValidation.addErrorMessage(timeStartElement);
+  this.formValidation.addErrorMessage(timeEndElement);
+};
 
-  timeEndElement.addEventListener('change', function () {
-    var startDate = _this.startDateElement.parentNode.querySelector('.start-date__picker').date;
-    var endDate = _this.endDateElement.parentNode.querySelector('.start-date__picker').date;
+/**
+ * The polymer time picker does not have a good way to compare times so
+ * this is a way to do that
+ */
+EventForm.prototype._getRawValue = function (timePicker) {
+  var hour = timePicker.hour;
+  var minute = timePicker.minute;
+  var period = timePicker.period;
 
-    if (moment(startDate).isSame(endDate)) {
-      var startTime = timeStartElement.parentNode.querySelector('.time-picker').rawValue;
-      var endTime = timeEndElement.parentNode.querySelector('.time-picker').rawValue;
+  if (period.toLowerCase() === 'pm' && hour < 12) {
+    hour = 12 + hour;
+  } else if (period.toLowerCase() === 'am' && hour == 12) {
+    hour = 0;
+  }
 
-      if (startTime > endTime) {
-        timeStartElement.setCustomValidity('Start time must come before end time');
-      }
-    }
-
-    _this.formValidation.addErrorMessage(timeStartElement);
-  });
+  return hour * 60 + minute;
 };
 
 /**
