@@ -56,9 +56,10 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
     if (moment(startDate).isAfter(endDate)) {
       endDate = moment(startDate).add(1, 'days');
       endDateElement.value = _this._formatDate(endDate);
+      _this._timeValidation(true);
+    } else {
+      _this._timeValidation();
     }
-
-    _this._timeValidation();
   });
 
   endDateElement.addEventListener('change', function () {
@@ -68,9 +69,10 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
     if (moment(endDate).isBefore(startDate)) {
       startDate = moment(endDate).subtract(1, 'days');
       startDateElement.value = _this._formatDate(startDate);
+      _this._timeValidation(true);
+    } else {
+      _this._timeValidation();
     }
-
-    _this._timeValidation();
   });
 };
 
@@ -82,13 +84,16 @@ EventForm.prototype._setupAutoTime = function () {
   timeEndElement.addEventListener('change', this._timeValidation.bind(this));
 };
 
-EventForm.prototype._timeValidation = function () {
+EventForm.prototype._timeValidation = function (override) {
   var timeStartElement = this.timeStartElement;
   var timeEndElement = this.timeEndElement;
   var startDate = this.startDateElement.value;
   var endDate = this.endDateElement.value;
 
-  if (moment(startDate).isSame(endDate)) {
+  if(override && typeof override === 'boolean') {
+    timeStartElement.setCustomValidity('');
+    timeEndElement.setCustomValidity('');
+  } else if (moment(startDate).isSame(endDate)) {
     var startTimePicker = timeStartElement.parentNode.querySelector('.time-picker');
     var endTimePicker = timeEndElement.parentNode.querySelector('.time-picker');
     var startTime = this._getRawValue(startTimePicker);
