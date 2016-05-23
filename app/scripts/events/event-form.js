@@ -57,6 +57,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
       endDate = moment(startDate).add(1, 'days');
       endDateElement.value = _this._formatDate(endDate);
       _this._timeValidation(true);
+    } else if(moment(endDate).isAfter(startDate)) {
+      _this._timeValidation(true);
     } else {
       _this._timeValidation();
     }
@@ -69,6 +71,8 @@ EventForm.prototype._setupAutoDate = function (startDateElement, endDateElement)
     if (moment(endDate).isBefore(startDate)) {
       startDate = moment(endDate).subtract(1, 'days');
       startDateElement.value = _this._formatDate(startDate);
+      _this._timeValidation(true);
+    } else if(moment(endDate).isAfter(startDate)) {
       _this._timeValidation(true);
     } else {
       _this._timeValidation();
