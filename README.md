@@ -7,12 +7,12 @@ This application allows a user to create an event and see a displayed view of th
 ## How to Run ##
 
 ### Production ###
-The deployed production version can be seen on [github pages](https://lexro.github.io/Eventure).
+The deployed production version can be seen on [github pages](https://lexlacson.github.io/Eventure).
 
 ### Running a local version ###
 
 ```
-git clone https://github.com/lexro/Eventure.git
+git clone https://github.com/lexlacson/Eventure.git
 npm install && bower install
 gulp serve
 ```
