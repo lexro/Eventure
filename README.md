@@ -7,7 +7,7 @@ This application allows a user to create an event and see a displayed view of th
 ## How to Run ##
 
 ### Production ###
-The deployed production version can be seen on [github pages](https://lexlacson.github.io/Eventure).
+The deployed production version can be seen on github pages.
 
 ### Running a local version ###
 
