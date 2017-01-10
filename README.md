@@ -12,7 +12,7 @@ The deployed production version can be seen on [github pages](https://lexlacson.
 ### Running a local version ###
 
 ```
-git clone https://github.com/lexlacson/Eventure.git
+git clone <this repo>
 npm install && bower install
 gulp serve
 ```
